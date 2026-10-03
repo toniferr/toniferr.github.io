@@ -18,21 +18,19 @@
   },
   "hero": {
     "kicker": "Software architect · Galicia, Spain",
+    "coords": "42°14′ N · 8°43′ W",
     "greeting": "Hi, I'm",
     "lead": "I design systems that are easy to reason about, deploy themselves and age well. {years} years building software; these days, architecture, platform and GitOps.",
     "ctaProjects": "See projects",
     "ctaContact": "Let's talk",
-    "diagramHint": "This diagram is the site map: click a service.",
-    "diagramLabel": "Interactive architecture diagram that doubles as the portfolio's site map",
+    "diagramHint": "Each star is a section: click one to travel there.",
+    "diagramLabel": "The Architectus constellation: an interactive star chart that doubles as the portfolio's site map",
     "scroll": "Scroll"
   },
   "titleblock": {
-    "project": "Project",
-    "projectValue": "Personal portfolio",
-    "author": "Author",
-    "scale": "Scale",
-    "sheet": "Sheet",
-    "rev": "Rev."
+    "plate": "Plate",
+    "chart": "star chart by",
+    "epoch": "epoch"
   },
   "about": {
     "title": "Architecture grounded in production",
@@ -52,17 +50,17 @@
     "demo": "Visit site",
     "download": "Download",
     "stars": "stars",
-    "updated": "Updated",
-    "since": "Since",
+    "updated": "Last observed",
+    "since": "Discovered",
     "license": "License",
     "highlights": "Key decisions",
     "related": "System repositories",
-    "diagram": "Architecture diagram of {name}",
+    "diagram": "Star chart of {name}",
     "otherTitle": "Other projects"
   },
   "career": {
-    "title": "Revision history",
-    "intro": "Every stage, a new revision of the drawing: work, learning and open source on a single timeline.",
+    "title": "Observation log",
+    "intro": "Every stage, an observation: work, learning and open source on a single timeline.",
     "present": "present",
     "trackWork": "Professional",
     "trackOss": "Open source",
@@ -70,16 +68,16 @@
     "draft": "draft"
   },
   "stack": {
-    "title": "Stack layers",
-    "intro": "The technologies I work with, arranged as what they are: layers of a system. Architecture cuts across all of them.",
+    "title": "Planetary system",
+    "intro": "The technologies I work with, orbiting what holds them together: architecture.",
     "crosscut": "Cross-cutting"
   },
   "github": {
     "title": "GitHub activity",
     "contributions": "{count} contributions in the last year",
-    "contribLabel": "Contribution calendar for the last year",
+    "contribLabel": "Sky map of last year's contributions: each star is a day",
     "contribDay": "{count} contributions on {date}",
-    "languages": "Languages by code volume",
+    "languages": "Language spectrum by code volume",
     "all": "See all repositories",
     "fetched": "GitHub data from {date}",
     "less": "Less",
@@ -99,5 +97,18 @@
     "source": "Source code",
     "top": "Back to top"
   },
-  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  "months": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ]
 }

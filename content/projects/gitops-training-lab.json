@@ -55,7 +55,7 @@
         "sub": { "es": "plataforma", "en": "platform", "gl": "plataforma" } },
       { "id": "app", "x": 1, "y": 14.5, "w": 10, "kind": "repo", "label": "java-api-gitops",
         "sub": { "es": "app · manifiestos", "en": "app · manifests", "gl": "app · manifestos" } },
-      { "id": "source", "x": 17, "y": 9, "w": 9, "kind": "controller", "label": "source-controller",
+      { "id": "source", "labelPos": "right", "x": 17, "y": 9, "w": 9, "kind": "controller", "label": "source-controller",
         "sub": "GitRepository" },
       { "id": "kustomize", "x": 17.5, "y": 14.5, "w": 8, "kind": "controller", "label": "kustomize-ctrl",
         "sub": "Kustomization" },

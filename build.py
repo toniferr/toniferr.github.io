@@ -17,6 +17,7 @@ import hashlib
 import html
 import http.server
 import json
+import math
 import os
 import re
 import shutil
@@ -38,7 +39,6 @@ OG_LOCALE = {"es": "es_ES", "en": "en_GB", "gl": "gl_ES"}
 
 UNIT = 20  # diagram grid unit, px
 NODE_H = 3  # default node height, grid units
-MONO_W = {13: 7.9, 11: 6.7, 10: 6.1}  # approx. JetBrains Mono advance per char at that font size
 
 WARNINGS: list[str] = []
 
@@ -259,151 +259,130 @@ def load_github(refresh: bool, release: bool, user: str) -> dict:
     return {"fetched_at": None, "profile": {}, "repos": [], "contributions": None}
 
 
-# --------------------------------------------------------------------------- diagrams
+# --------------------------------------------------------------------------- star charts
+# Project diagrams are drawn as star charts: every node is a star at the centre of its grid box,
+# edges are constellation lines and groups are dashed constellation boundaries, as in a printed atlas.
 
-ICONS = {
-    "user": '<circle cx="8" cy="5" r="3"/><path d="M2 15c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5"/>',
-    "repo": '<circle cx="4" cy="3" r="1.6"/><circle cx="4" cy="13" r="1.6"/><circle cx="12" cy="5" r="1.6"/>'
-            '<path d="M4 4.6v6.8M12 6.6c0 3.4-8 1.8-8 4.8"/>',
-    "db": '<ellipse cx="8" cy="3.5" rx="5.5" ry="2"/><path d="M2.5 3.5v9c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2v-9'
-          'M2.5 8c0 1.1 2.5 2 5.5 2s5.5-.9 5.5-2"/>',
-    "external": '<path d="M4.5 13h7.6a3 3 0 0 0 .3-6 4.5 4.5 0 0 0-8.6-1.1A3.6 3.6 0 0 0 4.5 13z"/>',
-    "service": '<path d="M8 1.5l6 3.5v6l-6 3.5-6-3.5V5z"/><path d="M8 8.5V15M8 8.5l6-3.5M8 8.5L2 5"/>',
-    "controller": '<path d="M13.2 9.5A5.4 5.4 0 1 1 11.6 4"/><path d="M12.2 1.2v3.4H8.8"/>'
-                  '<circle cx="8" cy="8.5" r="1.4"/>',
-    "browser": '<rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/><path d="M1.5 5.5h13"/>'
-               '<path d="M4.5 9h4M4.5 11h6"/>',
-    "lock": '<rect x="3" y="7" width="10" height="7.5" rx="1"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2M8 10v1.8"/>',
-    "doc": '<path d="M4 1.5h5.5l3 3v10H4z"/><path d="M9.5 1.5v3h3M6 8h4.5M6 10.5h4.5"/>',
-    "cube": '<path d="M8 1.5l6 3.2v6.6L8 14.5l-6-3.2V4.7z"/><path d="M2 4.7l6 3.3 6-3.3M8 8v6.5"/>',
-    "gateway": '<path d="M1.5 8h4.5M6 8l7-5M6 8h7M6 8l7 5"/><circle cx="13" cy="3" r="1.2"/>'
-               '<circle cx="13" cy="8" r="1.2"/><circle cx="13" cy="13" r="1.2"/>',
-}
+SERIF_W = 7.8   # approx. Cormorant Garamond italic advance per char at 19px
+SUB_W = 7.4     # approx. JetBrains Mono advance per char at 10.5px with letter-spacing
 
 
 def node_box(n: dict) -> tuple[float, float, float, float]:
     return n["x"] * UNIT, n["y"] * UNIT, n.get("w", 8) * UNIT, n.get("h", NODE_H) * UNIT
 
 
-def route(a: dict, b: dict, edge: dict) -> list[tuple[float, float]]:
-    """Orthogonal route between two node boxes, border to border."""
-    ax, ay, aw, ah = node_box(a)
-    bx, by, bw, bh = node_box(b)
-    acx, acy, bcx, bcy = ax + aw / 2, ay + ah / 2, bx + bw / 2, by + bh / 2
-    if ax + aw <= bx or bx + bw <= ax:  # side by side: horizontal - vertical - horizontal
-        sx, ex = (ax + aw, bx) if bcx > acx else (ax, bx + bw)
-        mx = edge["mid"] * UNIT if "mid" in edge else (sx + ex) / 2
-        pts = [(sx, acy), (mx, acy), (mx, bcy), (ex, bcy)]
-    else:  # stacked: vertical - horizontal - vertical
-        sy, ey = (ay + ah, by) if bcy > acy else (ay, by + bh)
-        my = edge["mid"] * UNIT if "mid" in edge else (sy + ey) / 2
-        pts = [(acx, sy), (acx, my), (bcx, my), (bcx, ey)]
-    dedup = [pts[0]]
-    for p in pts[1:]:
-        if abs(p[0] - dedup[-1][0]) > 0.01 or abs(p[1] - dedup[-1][1]) > 0.01:
-            dedup.append(p)
-    # drop collinear middle points so straight edges are a single segment
-    clean = [dedup[0]]
-    for i in range(1, len(dedup) - 1):
-        (x0, y0), (x1, y1), (x2, y2) = clean[-1], dedup[i], dedup[i + 1]
-        if not ((abs(x0 - x1) < .01 and abs(x1 - x2) < .01) or (abs(y0 - y1) < .01 and abs(y1 - y2) < .01)):
-            clean.append(dedup[i])
-    clean.append(dedup[-1])
-    return clean
+def node_centre(n: dict) -> tuple[float, float]:
+    x, y, w, h = node_box(n)
+    return x + w / 2, y + h / 2
 
 
-def rounded_path(pts: list[tuple[float, float]], r: float = 6) -> str:
-    def n(v):
-        return f"{v:.1f}".rstrip("0").rstrip(".")
-    d = [f"M{n(pts[0][0])} {n(pts[0][1])}"]
-    for i in range(1, len(pts) - 1):
-        (x0, y0), (x1, y1), (x2, y2) = pts[i - 1], pts[i], pts[i + 1]
-        l1 = abs(x1 - x0) + abs(y1 - y0)
-        l2 = abs(x2 - x1) + abs(y2 - y1)
-        rr = min(r, l1 / 2, l2 / 2)
-        ux, uy = ((x1 - x0) / l1, (y1 - y0) / l1) if l1 else (0, 0)
-        vx, vy = ((x2 - x1) / l2, (y2 - y1) / l2) if l2 else (0, 0)
-        d.append(f"L{n(x1 - ux * rr)} {n(y1 - uy * rr)}Q{n(x1)} {n(y1)} {n(x1 + vx * rr)} {n(y1 + vy * rr)}")
-    d.append(f"L{n(pts[-1][0])} {n(pts[-1][1])}")
-    return "".join(d)
-
-
-def polyline_midpoint(pts):
-    segs = [(pts[i], pts[i + 1], abs(pts[i + 1][0] - pts[i][0]) + abs(pts[i + 1][1] - pts[i][1]))
-            for i in range(len(pts) - 1)]
-    half = sum(s[2] for s in segs) / 2
-    for (x0, y0), (x1, y1), length in segs:
-        if half <= length and length:
-            t = half / length
-            return x0 + (x1 - x0) * t, y0 + (y1 - y0) * t
-        half -= length
-    return pts[-1]
-
-
-def text_width(s: str, size: int) -> float:
-    return len(s) * MONO_W[size]
+def star_symbol(kind: str, accent: bool) -> str:
+    """Chart symbols: external systems are galaxies, data stores planetary nebulae, users observers."""
+    if kind == "external":
+        return ('<ellipse class="st-galaxy" rx="9" ry="3.8" transform="rotate(-25)"/>'
+                '<circle class="st-core" r="1.8"/>')
+    if kind == "db":
+        return '<circle class="st-ring" r="7.5"/><circle class="st-core" r="2.8"/>'
+    if kind == "user":
+        return '<path class="st-spikes" d="M-9 0H9M0-9V9"/><circle class="st-core" r="2.6"/>'
+    r = 6.2 if accent else 4.2
+    return f'<circle class="st-glow" r="{r * 3:.1f}"/><circle class="st-core" r="{r}"/>'
 
 
 def render_diagram(spec: dict, lang: str, uid: str, title: str, extra_class: str = "") -> str:
     W, H = spec["cols"] * UNIT, spec["rows"] * UNIT
     nodes = {n["id"]: n for n in spec["nodes"]}
-    o = [f'<svg class="dg {extra_class}" viewBox="-2 -2 {W + 4} {H + 4}" role="img" '
+    o = [f'<svg class="dg {extra_class}" viewBox="-10 -10 {W + 20} {H + 20}" role="img" '
          f'aria-labelledby="{uid}-t" data-uid="{uid}">',
-         f'<title id="{uid}-t">{esc(title)}</title>',
-         f'<defs><marker id="{uid}-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" '
-         f'orient="auto-start-reverse"><path class="dg-arrow" d="M1 1.5L9 5L1 8.5"/></marker></defs>']
+         f'<title id="{uid}-t">{esc(title)}</title>']
 
     for i, g in enumerate(spec.get("groups", [])):
         x, y, w, h = g["x"] * UNIT, g["y"] * UNIT, g["w"] * UNIT, g["h"] * UNIT
         label = loc(g.get("label", ""), lang)
-        lw = text_width(label, 10) + 12
-        t = 7  # corner bracket length
-        brackets = "".join([
-            f"M{x} {y + t}V{y}H{x + t}", f"M{x + w - t} {y}H{x + w}V{y + t}",
-            f"M{x + w} {y + h - t}V{y + h}H{x + w - t}", f"M{x + t} {y + h}H{x}V{y + h - t}"])
-        o.append(f'<g class="dg-group" data-i="{i}"><rect class="dg-group-box" x="{x}" y="{y}" width="{w}" height="{h}"/>'
-                 f'<path class="dg-group-corner" d="{brackets}"/>'
-                 f'<rect class="dg-group-tab" x="{x + 10}" y="{y - 7}" width="{lw:.0f}" height="14"/>'
-                 f'<text class="dg-group-label" x="{x + 16}" y="{y + 3.5}">{esc(label)}</text></g>')
+        o.append(f'<g class="dg-group" data-i="{i}"><rect class="dg-group-box" x="{x}" y="{y}" width="{w}" '
+                 f'height="{h}" rx="22"/><text class="dg-group-label" x="{x + 16}" y="{y + 20}">{esc(label)}</text></g>')
 
     for i, e in enumerate(spec["edges"]):
-        a, b = nodes[e["from"]], nodes[e["to"]]
-        pts = route(a, b, e)
-        d = rounded_path(pts)
+        (ax, ay), (bx, by) = node_centre(nodes[e["from"]]), node_centre(nodes[e["to"]])
+        dx, dy = bx - ax, by - ay
+        length = (dx * dx + dy * dy) ** 0.5 or 1
+        ux, uy = dx / length, dy / length
+        x1, y1, x2, y2 = ax + ux * 11, ay + uy * 11, bx - ux * 11, by - uy * 11  # stop short of the stars
+        d = f"M{x1:.1f} {y1:.1f}L{x2:.1f} {y2:.1f}"
         o.append(f'<g class="dg-edge-g" data-from="{e["from"]}" data-to="{e["to"]}" data-i="{i}">'
-                 f'<path class="dg-edge" d="{d}" pathLength="1" marker-end="url(#{uid}-arrow)"/>'
-                 f'<path class="dg-flow" d="{d}"/>')
+                 f'<path class="dg-edge" d="{d}" pathLength="1"/><path class="dg-flow" d="{d}"/>')
         if e.get("label"):
-            label = loc(e["label"], lang)
-            mx, my = polyline_midpoint(pts)
-            lw = text_width(label, 10) + 10
-            o.append(f'<g class="dg-elabel"><rect x="{mx - lw / 2:.1f}" y="{my - 8:.1f}" width="{lw:.1f}" '
-                     f'height="16" rx="2"/><text x="{mx:.1f}" y="{my + 3.5:.1f}">{esc(label)}</text></g>')
+            mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+            o.append(f'<text class="dg-elabel" x="{mx:.1f}" y="{my - 6:.1f}">{esc(loc(e["label"], lang))}</text>')
         o.append("</g>")
 
     for i, n in enumerate(spec["nodes"]):
         x, y, w, h = node_box(n)
+        cx, cy = node_centre(n)
         kind = n.get("kind", "service")
         label, sub = loc(n["label"], lang), loc(n.get("sub", ""), lang)
-        if max(text_width(label, 13), text_width(sub, 11)) + 44 > w:
-            warn(f"diagram {uid}: label of node '{n['id']}' may overflow ({label!r} in {w:.0f}px)")
-        cls = f"dg-node kind-{kind}" + (" accent" if n.get("accent") else "") + (" is-link" if n.get("href") else "")
-        ty = h / 2 + (-2 if sub else 4)
-        inner = [f'<rect class="dg-box" width="{w}" height="{h}" rx="3"/>']
-        if kind == "gateway":
-            inner.append(f'<rect class="dg-box-inner" x="3" y="3" width="{w - 6}" height="{h - 6}" rx="2"/>')
-        inner.append(f'<g class="dg-icon" transform="translate(12 {h / 2 - 8:.1f})">{ICONS.get(kind, ICONS["service"])}</g>')
-        inner.append(f'<text class="dg-label" x="36" y="{ty:.1f}">{esc(label)}</text>')
+        pos = n.get("labelPos", "below")
+        if pos in ("below", "above") and max(len(label) * SERIF_W, len(sub) * SUB_W) > w + 20:
+            warn(f"chart {uid}: label of star '{n['id']}' is wider than its box ({label!r} in {w:.0f}px)")
+        anchor = {"below": "middle", "above": "middle", "right": "start", "left": "end"}[pos]
+        lx = {"below": 0, "above": 0, "right": 15, "left": -15}[pos]
+        ly = {"below": 29, "above": -32 if sub else -18, "right": sub and -2 or 5, "left": sub and -2 or 5}[pos]
+        cls = f"dg-node kind-{kind}" + (" accent" if n.get("accent") else "")
+        texts = f'<text class="dg-label" x="{lx}" y="{ly}" text-anchor="{anchor}">{esc(label)}</text>'
         if sub:
-            inner.append(f'<text class="dg-sub" x="36" y="{ty + 14:.1f}">{esc(sub)}</text>')
-        body = "".join(inner)
-        g = (f'<g class="{cls}" data-id="{n["id"]}" data-i="{i}" transform="translate({x:.0f} {y:.0f})">'
-             f'{body}</g>')
-        if n.get("href"):
-            g = f'<a class="dg-link" href="{esc(n["href"])}" aria-label="{esc(sub or label)}">{g}</a>'
-        o.append(g)
+            texts += f'<text class="dg-sub" x="{lx}" y="{ly + 16}" text-anchor="{anchor}">{esc(sub)}</text>'
+        o.append(f'<g class="{cls}" data-id="{n["id"]}" data-i="{i}" transform="translate({cx:.0f} {cy:.0f})">'
+                 f'{star_symbol(kind, bool(n.get("accent")))}{texts}</g>')
     o.append("</svg>")
     return "".join(o)
+
+
+def render_constellation(spec: dict, lang: str, title: str) -> str:
+    """The hero: one star per section, joined by constellation lines; every star is a link."""
+    W, H = spec["width"], spec["height"]
+    stars = {st["id"]: st for st in spec["stars"]}
+    o = [f'<svg class="constellation" viewBox="0 0 {W} {H}" role="img" aria-labelledby="cs-t">',
+         f'<title id="cs-t">{esc(title)}</title>',
+         # decorative celestial grid: two meridians and a parallel, like an atlas plate
+         '<g class="cs-grid" aria-hidden="true">'
+         f'<path d="M-40 {H * .78:.0f} Q {W / 2:.0f} {H * .52:.0f} {W + 40} {H * .7:.0f}"/>'
+         f'<path d="M{W * .22:.0f} -20 Q {W * .3:.0f} {H / 2:.0f} {W * .18:.0f} {H + 20}"/>'
+         f'<path d="M{W * .68:.0f} -20 Q {W * .6:.0f} {H / 2:.0f} {W * .74:.0f} {H + 20}"/>'
+         '</g>']
+    for i, (a, b) in enumerate(spec["lines"]):
+        sa, sb = stars[a], stars[b]
+        o.append(f'<line class="cs-line" data-a="{a}" data-b="{b}" data-i="{i}" x1="{sa["x"]}" y1="{sa["y"]}" '
+                 f'x2="{sb["x"]}" y2="{sb["y"]}" pathLength="1"/>')
+    for i, st in enumerate(spec["stars"]):
+        r = max(2.4, 8 - 2.1 * st["mag"])
+        label, sub = loc(st["label"], lang), loc(st.get("sub", ""), lang)
+        spikes = (f'<path class="cs-spikes" d="M{-r * 4:.1f} 0H{r * 4:.1f}M0 {-r * 4:.1f}V{r * 4:.1f}"/>'
+                  if st["mag"] < 1.2 else "")
+        o.append(
+            f'<a class="cs-link" href="{esc(st["href"])}" aria-label="{esc(st["greek"])} {esc(label)}">'
+            f'<g class="cs-star" data-id="{st["id"]}" data-i="{i}" transform="translate({st["x"]} {st["y"]})">'
+            f'<circle class="cs-hit" r="34"/><circle class="cs-halo" r="{r * 4.5:.1f}"/>{spikes}'
+            f'<circle class="cs-core" r="{r:.1f}"/>'
+            f'<text class="cs-greek" x="{r + 8:.0f}" y="{-r - 4:.0f}">{esc(st["greek"])}</text>'
+            f'<text class="cs-name" x="{r + 8:.0f}" y="{r + 16:.0f}">{esc(label)}</text>'
+            + (f'<text class="cs-sub" x="{r + 8:.0f}" y="{r + 31:.0f}">{esc(sub)}</text>' if sub else "")
+            + '</g></a>')
+    o.append(f'<text class="cs-title" x="{W - 8}" y="{H - 14}" text-anchor="end">{esc(spec["name"].upper())}</text>')
+    o.append("</svg>")
+    return "".join(o)
+
+
+ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+         (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+
+
+def roman(n: int) -> str:
+    out = ""
+    for v, sym in ROMAN:
+        while n >= v:
+            out += sym
+            n -= v
+    return out
 
 
 # --------------------------------------------------------------------------- page helpers
@@ -412,10 +391,11 @@ def render_diagram(spec: dict, lang: str, uid: str, title: str, extra_class: str
 def section_head(sid: str, no: int, ui: dict, title: str, intro: str | None = None) -> str:
     label = ui["nav"][sid]
     return (f'<header class="sheet-head reveal">'
-            f'<p class="sheet-label"><span class="sheet-no">{no:02d}</span><span>{esc(label)}</span></p>'
+            f'<p class="sheet-label"><span class="sheet-no">{roman(no)}</span><span>{esc(label)}</span></p>'
             f'<h2 id="{sid}-h">{md(title)}</h2>'
             + (f'<p class="sheet-intro">{md(intro)}</p>' if intro else "")
-            + f'<span class="sheet-ref" aria-hidden="true">TF-DWG-{no:02d} · REV {dt.date.today():%y.%m}</span>'
+            + f'<span class="sheet-ref" aria-hidden="true">{esc(ui["titleblock"]["plate"])} {roman(no)} · '
+              f'{roman(dt.date.today().year)}</span>'
             f'</header>')
 
 
@@ -500,33 +480,31 @@ def render_hero(c: dict, lang: str, ui: dict) -> str:
     h = ui["hero"]
     t = ui["titleblock"]
     years = years_since(p["careerStart"])
-    diagram = render_diagram(c["hero"], lang, "hero", h["diagramLabel"], "dg-hero")
+    chart = render_constellation(c["hero"], lang, h["diagramLabel"])
     first, _, rest = p["name"].partition(" ")
     return f"""
 <section class="hero" id="top" aria-labelledby="hero-name">
   <div class="hero-text">
-    <p class="kicker"><span class="kicker-dot" aria-hidden="true"></span>{esc(h['kicker'])}</p>
+    <p class="kicker"><span class="kicker-star" aria-hidden="true">✦</span>{esc(h['kicker'])}</p>
+    <p class="coords" aria-hidden="true">{esc(h['coords'])}</p>
     <h1 id="hero-name"><span class="greet">{esc(h['greeting'])}</span>
       <span class="name"><span class="name-line">{esc(first)}</span> <span class="name-line">{esc(rest)}</span></span>
     </h1>
-    <div class="dim-line" aria-hidden="true"><span>{years} {esc(ui['about']['figYears'].split(' ')[0])}</span></div>
     <p class="lead">{md(fmt(h['lead'], years=years))}</p>
     <div class="cta">
       <a class="btn btn-primary" href="#projects">{esc(h['ctaProjects'])}</a>
       <a class="btn" href="#contact">{esc(h['ctaContact'])}</a>
     </div>
   </div>
-  <figure class="hero-diagram">
-    {diagram}
+  <figure class="hero-chart">
+    {chart}
     <figcaption>{esc(h['diagramHint'])}</figcaption>
   </figure>
-  <dl class="titleblock" aria-hidden="true">
-    <div><dt>{esc(t['project'])}</dt><dd>{esc(t['projectValue'])}</dd></div>
-    <div><dt>{esc(t['author'])}</dt><dd>{esc(p['name'])}</dd></div>
-    <div><dt>{esc(t['scale'])}</dt><dd>1:1</dd></div>
-    <div><dt>{esc(t['rev'])}</dt><dd>{dt.date.today():%Y.%m}</dd></div>
-    <div><dt>{esc(t['sheet'])}</dt><dd>01 / 07</dd></div>
-  </dl>
+  <div class="cartouche" aria-hidden="true">
+    <span class="c-plate">{esc(t['plate'])} I</span>
+    <span class="c-title">{esc(c['hero']['name'])}</span>
+    <span class="c-sub">{esc(loc(c['hero']['meaning'], lang))} · {esc(t['chart'])} {esc(p['name'])} · {esc(t['epoch'])} {dt.date.today():%Y.%m}</span>
+  </div>
   <a class="scroll-cue" href="#about" aria-label="{esc(h['scroll'])}"><span aria-hidden="true"></span></a>
 </section>"""
 
@@ -551,9 +529,9 @@ def render_about(c: dict, lang: str, ui: dict, gh: dict, base: str) -> str:
     <figure class="portrait reveal">
       <div class="portrait-frame">
         <img src="{base}assets/img/avatar.jpg" width="320" height="320" alt="{esc(fmt(a['portrait'], name=p['name']))}" loading="lazy" decoding="async">
-        <span class="crosshair tl"></span><span class="crosshair tr"></span><span class="crosshair bl"></span><span class="crosshair br"></span>
+        <span class="reticle" aria-hidden="true"></span>
       </div>
-      <figcaption><span>FIG. 1</span><span>{esc(c['profile']['location'][lang])}</span></figcaption>
+      <figcaption><span>OBS. I</span><span>{esc(c['profile']['location'][lang])}</span></figcaption>
     </figure>
     <div class="about-body reveal">
       {body}
@@ -600,12 +578,12 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
         if p.get("diagram"):
             diagram = (f'<figure class="project-diagram">'
                        f'{render_diagram(p["diagram"], lang, "p-" + p["id"], fmt(pu["diagram"], name=p["title"]))}'
-                       f'<figcaption>FIG. P-{n:02d} · {esc(p["title"])}</figcaption></figure>')
+                       f'<figcaption>TF {n} · {esc(p["title"])}</figcaption></figure>')
         lang_bar = render_repo_languages(r.get("languages", {})) if r else ""
         arts.append(f"""
   <article class="project reveal{' flip' if n % 2 == 0 else ''}" id="project-{esc(p['id'])}" aria-labelledby="project-{esc(p['id'])}-h">
     <div class="project-text">
-      <p class="project-no">P-{n:02d}</p>
+      <p class="project-no">TF {n}</p>
       <h3 id="project-{esc(p['id'])}-h">{esc(p['title'])}</h3>
       <p class="tagline">{md(loc(p['tagline'], lang))}</p>
       <ul class="meta">{''.join(meta)}</ul>
@@ -699,6 +677,25 @@ def render_career(c: dict, lang: str, ui: dict, release: bool) -> str:
 </section>"""
 
 
+def render_orrery(layers: list, lang: str, sun: str) -> str:
+    """The architecture is the sun; each stack layer orbits it. Planets are moved by main.js."""
+    o = ['<svg class="orrery" viewBox="-250 -132 500 264" aria-hidden="true">']
+    planets = []
+    for n, layer in enumerate(layers, 1):
+        rx = 62 + (n - 1) * 34
+        ry = rx * .5
+        angle = (n * 137.5) % 360  # golden angle, so planets start spread out
+        px, py = rx * math.cos(math.radians(angle)), ry * math.sin(math.radians(angle))
+        o.append(f'<ellipse class="orbit s{n}" data-layer="{esc(layer["id"])}" rx="{rx}" ry="{ry:.1f}"/>')
+        planets.append(f'<g class="planet s{n}" data-layer="{esc(layer["id"])}" data-rx="{rx}" data-ry="{ry:.1f}" '
+                       f'data-angle="{angle:.1f}" data-period="{24 + n * 9}" transform="translate({px:.1f} {py:.1f})">'
+                       f'<circle r="{5 + (n % 3)}"/><text x="10" y="4">L{n}</text></g>')
+    o.append('<circle class="sun-glow" r="46"/><circle class="sun" r="20"/>')
+    o += planets
+    o.append(f'<text class="sun-label" y="44" text-anchor="middle">{esc(sun)}</text></svg>')
+    return "".join(o)
+
+
 def render_stack(c: dict, lang: str, ui: dict) -> str:
     su = ui["stack"]
     s = c["skills"]
@@ -707,16 +704,20 @@ def render_stack(c: dict, lang: str, ui: dict) -> str:
     layers = []
     for n, layer in enumerate(s["layers"], 1):
         chips = "".join(f"<li>{esc(loc(i, lang))}</li>" for i in layer["items"])
-        layers.append(f'<li class="layer reveal" data-layer="{esc(layer["id"])}">'
-                      f'<p class="layer-name"><span class="layer-no">L{n}</span>{esc(loc(layer["label"], lang))}</p>'
+        layers.append(f'<li class="layer s{n} reveal" data-layer="{esc(layer["id"])}">'
+                      f'<p class="layer-name"><span class="sw s{n}" aria-hidden="true"></span>'
+                      f'<span class="layer-no">L{n}</span>{esc(loc(layer["label"], lang))}</p>'
                       f'<ul class="chips">{chips}</ul></li>')
     return f"""
 <section class="sheet" id="stack" aria-labelledby="stack-h">
   {section_head('stack', 5, ui, su['title'], su['intro'])}
   <div class="layers">
-    <div class="crosscut reveal">
-      <p class="crosscut-label"><span>{esc(loc(cross['label'], lang))}</span><small>{esc(su['crosscut'])}</small></p>
-      <ul>{cross_items}</ul>
+    <div class="system reveal">
+      {render_orrery(s['layers'], lang, loc(cross['label'], lang))}
+      <div class="crosscut">
+        <p class="crosscut-label"><span>{esc(loc(cross['label'], lang))}</span><small>{esc(su['crosscut'])}</small></p>
+        <ul>{cross_items}</ul>
+      </div>
     </div>
     <ol class="layer-list">{''.join(layers)}</ol>
   </div>
@@ -764,8 +765,8 @@ def render_heatmap(contrib: dict, ui: dict) -> str:
         x, y = col * (cell + gap), row * (cell + gap) + 18
         date = dt.date.fromisoformat(d["date"])
         tip = fmt(ui["github"]["contribDay"], count=d["count"], date=fmt_date(d["date"], ui, with_day=True))
-        rects.append(f'<rect class="hm l{d["level"]}" x="{x}" y="{y}" width="{cell}" height="{cell}" rx="2" '
-                     f'data-tip="{esc(tip)}"/>')
+        rects.append(f'<circle class="hm l{d["level"]}" cx="{x + cell / 2}" cy="{y + cell / 2}" '
+                     f'r="{(1.3, 2.4, 3.4, 4.4, 5.6)[d["level"]]}" data-tip="{esc(tip)}"/>')
         if date.day <= 7 and date.month != last_month and col < cols - 2:
             months.append(f'<text class="hm-month" x="{col * (cell + gap)}" y="10">{esc(ui["months"][date.month - 1])}</text>')
             last_month = date.month
@@ -890,7 +891,7 @@ def render_page(c: dict, lang: str, gh: dict, base: str, release: bool) -> str:
     js_strings = {"lang": lang}
     body = "".join([
         f'<a class="skip" href="#main">{esc(ui["nav"]["skip"])}</a>',
-        '<div class="bg-grid" aria-hidden="true"></div>',
+        '<canvas class="sky" aria-hidden="true"></canvas>',
         render_nav(c, lang, ui, base),
         '<main id="main">',
         render_hero(c, lang, ui),
@@ -902,7 +903,7 @@ def render_page(c: dict, lang: str, gh: dict, base: str, release: bool) -> str:
         render_contact(c, lang, ui),
         "</main>",
         render_footer(c, ui),
-        '<div class="readout" aria-hidden="true"><span class="rx">X 0000</span><span class="ry">Y 0000</span></div>',
+        '<div class="readout" aria-hidden="true"><span class="rx">AR 00h 00m</span><span class="ry">Dec +00° 00′</span></div>',
         '<div class="tip" role="tooltip" hidden></div>',
     ])
     template = (SRC / "template.html").read_text(encoding="utf-8")
@@ -919,7 +920,7 @@ def render_page(c: dict, lang: str, gh: dict, base: str, release: bool) -> str:
         "css": asset_url(base, "css/main.css"),
         "theme_js": asset_url(base, "js/theme.js"),
         "main_js": asset_url(base, "js/main.js"),
-        "font_preload": f"{base}assets/fonts/space-grotesk.woff2",
+        "font_preload": f"{base}assets/fonts/cormorant-garamond.woff2",
         "jsonld": json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
         "js_strings": esc(json.dumps(js_strings, ensure_ascii=False)),
         "body": body,

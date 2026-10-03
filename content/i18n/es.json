@@ -18,21 +18,19 @@
   },
   "hero": {
     "kicker": "Arquitecto de software · Galicia",
+    "coords": "42°14′ N · 8°43′ O",
     "greeting": "Hola, soy",
     "lead": "Diseño sistemas que se entienden, se despliegan solos y aguantan el paso del tiempo. {years} años construyendo software; hoy, arquitectura, plataforma y GitOps.",
     "ctaProjects": "Ver proyectos",
     "ctaContact": "Hablemos",
-    "diagramHint": "Este diagrama es el mapa del sitio: pulsa un servicio.",
-    "diagramLabel": "Diagrama de arquitectura interactivo que sirve de mapa del portfolio",
+    "diagramHint": "Cada estrella es una sección: pulsa una para viajar hasta ella.",
+    "diagramLabel": "Constelación Architectus: carta estelar interactiva que hace de mapa del portfolio",
     "scroll": "Desplázate"
   },
   "titleblock": {
-    "project": "Proyecto",
-    "projectValue": "Portfolio personal",
-    "author": "Autor",
-    "scale": "Escala",
-    "sheet": "Hoja",
-    "rev": "Rev."
+    "plate": "Lámina",
+    "chart": "carta celeste de",
+    "epoch": "época"
   },
   "about": {
     "title": "Arquitectura con los pies en producción",
@@ -52,17 +50,17 @@
     "demo": "Ver web",
     "download": "Descargar",
     "stars": "estrellas",
-    "updated": "Actualizado",
-    "since": "Desde",
+    "updated": "Última observación",
+    "since": "Descubierto en",
     "license": "Licencia",
     "highlights": "Decisiones clave",
     "related": "Repos del sistema",
-    "diagram": "Diagrama de arquitectura de {name}",
+    "diagram": "Carta estelar de {name}",
     "otherTitle": "Otros proyectos"
   },
   "career": {
-    "title": "Historial de revisiones",
-    "intro": "Cada etapa, una revisión del plano: trabajo, formación y open source en una misma línea de tiempo.",
+    "title": "Cuaderno de observación",
+    "intro": "Cada etapa, una observación: trabajo, formación y open source en una misma línea de tiempo.",
     "present": "actualidad",
     "trackWork": "Profesional",
     "trackOss": "Open source",
@@ -70,16 +68,16 @@
     "draft": "borrador"
   },
   "stack": {
-    "title": "Capas del stack",
-    "intro": "Las tecnologías con las que trabajo, ordenadas como lo que son: capas de un sistema. La arquitectura las atraviesa todas.",
+    "title": "Sistema planetario",
+    "intro": "Las tecnologías con las que trabajo, en órbita alrededor de lo que las mantiene unidas: la arquitectura.",
     "crosscut": "Transversal"
   },
   "github": {
     "title": "Actividad en GitHub",
     "contributions": "{count} contribuciones en el último año",
-    "contribLabel": "Calendario de contribuciones del último año",
+    "contribLabel": "Mapa de cielo de contribuciones del último año: cada estrella es un día",
     "contribDay": "{count} contribuciones el {date}",
-    "languages": "Lenguajes por volumen de código",
+    "languages": "Espectro de lenguajes por volumen de código",
     "all": "Ver todos los repositorios",
     "fetched": "Datos de GitHub del {date}",
     "less": "Menos",
@@ -99,5 +97,18 @@
     "source": "Código fuente",
     "top": "Volver arriba"
   },
-  "months": ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+  "months": [
+    "ene",
+    "feb",
+    "mar",
+    "abr",
+    "may",
+    "jun",
+    "jul",
+    "ago",
+    "sep",
+    "oct",
+    "nov",
+    "dic"
+  ]
 }

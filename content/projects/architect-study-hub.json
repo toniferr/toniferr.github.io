@@ -48,13 +48,13 @@
     "nodes": [
       { "id": "docs", "x": 0, "y": 1.5, "w": 8, "kind": "doc", "label": "docs/*.md", "sub": "Markdown" },
       { "id": "actions", "x": 12, "y": 1.5, "w": 9, "kind": "controller", "label": "GitHub Actions", "sub": "mkdocs --strict" },
-      { "id": "pages", "x": 25, "y": 1.5, "w": 9, "kind": "external", "label": "GitHub Pages",
+      { "id": "pages", "labelPos": "right", "x": 25, "y": 1.5, "w": 9, "kind": "external", "label": "GitHub Pages",
         "sub": { "es": "web estática", "en": "static site", "gl": "web estática" } },
       { "id": "browser", "x": 25, "y": 8.75, "w": 9, "kind": "browser",
         "label": { "es": "navegador", "en": "browser", "gl": "navegador" },
         "sub": { "es": "lector", "en": "reader", "gl": "lector" } },
       { "id": "env", "x": 1, "y": 8.75, "w": 7, "kind": "lock", "label": ".env", "sub": "API key" },
-      { "id": "chat", "x": 12, "y": 8.75, "w": 9, "kind": "service", "label": "chat/server.py", "sub": ":8001 · stream", "accent": true },
+      { "id": "chat", "labelPos": "above", "x": 12, "y": 8.75, "w": 9, "kind": "service", "label": "chat/server.py", "sub": ":8001 · stream", "accent": true },
       { "id": "llm", "x": 12, "y": 16, "w": 9, "kind": "external", "label": "LLM API", "sub": "Gemini · Claude" }
     ],
     "edges": [
