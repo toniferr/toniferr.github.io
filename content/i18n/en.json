@@ -39,14 +39,6 @@
     "body": [
       "I'm Toni, a computer engineer from the University of Vigo. I've been building software since {careerStart}, first at Bahia Software and, since 2021, at Softtek, where I went on to lead retail projects as technical lead. These days I focus on the decisions: how a system is split, how it's deployed and how it's maintained without fear."
     ],
-    "notesTitle": "Notes",
-    "notes": [
-      "Important decisions are written down (ADRs) and reviewed like code.",
-      "Git is the source of truth: if it isn't declared, it doesn't exist.",
-      "Secure by default, not as a final phase.",
-      "Simple and working beats sophisticated and scary.",
-      "Teaching something is the best proof that you understand it."
-    ],
     "figYears": "years building software",
     "figRepos": "public repositories",
     "figStars": "GitHub stars",
@@ -84,12 +76,10 @@
   },
   "github": {
     "title": "GitHub activity",
-    "intro": "Real data, pulled from the GitHub API every time the site is published.",
     "contributions": "{count} contributions in the last year",
     "contribLabel": "Contribution calendar for the last year",
     "contribDay": "{count} contributions on {date}",
     "languages": "Languages by code volume",
-    "recent": "Recent activity",
     "all": "See all repositories",
     "fetched": "GitHub data from {date}",
     "less": "Less",
@@ -102,8 +92,7 @@
     "body": "Architecture, platform, a training session or just a good technical conversation: drop me a line.",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "location": "Location"
+    "github": "GitHub"
   },
   "footer": {
     "built": "Built with AI: framework-free HTML, CSS and JavaScript, generated with Python and published with GitHub Actions.",

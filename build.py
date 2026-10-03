@@ -441,7 +441,6 @@ ICON_SVG = {
                 '1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z" '
                 'fill="currentColor" stroke="none"/>',
     "mail": '<rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 6.5l9 6.5 9-6.5"/>',
-    "pin": '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
     "star": '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/>',
     "clock": '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
     "flag": '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
@@ -545,7 +544,6 @@ def render_about(c: dict, lang: str, ui: dict, gh: dict, base: str) -> str:
     fig_html = "".join(f'<div class="fig"><dt>{esc(label)}</dt><dd data-count="{esc(v)}">{esc(v)}</dd></div>'
                        for v, label in figs)
     body = "".join(f"<p>{md(fmt(par, careerStart=p['careerStart']))}</p>" for par in a["body"])
-    notes = "".join(f"<li>{md(n)}</li>" for n in a["notes"])
     return f"""
 <section class="sheet" id="about" aria-labelledby="about-h">
   {section_head('about', 2, ui, a['title'])}
@@ -561,10 +559,6 @@ def render_about(c: dict, lang: str, ui: dict, gh: dict, base: str) -> str:
       {body}
       <dl class="figures">{fig_html}</dl>
     </div>
-    <aside class="notes reveal" aria-labelledby="notes-h">
-      <h3 id="notes-h">{esc(a['notesTitle'])}</h3>
-      <ol>{notes}</ol>
-    </aside>
   </div>
 </section>"""
 
@@ -821,25 +815,16 @@ def render_github(c: dict, lang: str, ui: dict, gh: dict) -> str:
     g = ui["github"]
     p = c["profile"]
     exclude = set(p["github"]["exclude"])
-    featured = {pr.get("repo", "").split("/")[-1].lower() for pr in c["projects"]}
-    featured |= {rel.split("/")[-1].lower() for pr in c["projects"] for rel in pr.get("related", [])}
-    recent = [r for r in gh.get("repos", []) if not r["fork"] and r["name"] not in exclude
-              and r["name"].lower() not in featured and not r["archived"]]
-    recent.sort(key=lambda r: r["pushed_at"], reverse=True)
-    cards = "".join(render_card(r["name"], r["description"], r["full_name"], None, r, ui)
-                    for r in recent[:p["github"]["recentCount"]])
     heat = render_heatmap(gh["contributions"], ui) if gh.get("contributions") else ""
     fetched = (f'<p class="fetched">{esc(fmt(g["fetched"], date=fmt_date(gh["fetched_at"], ui, with_day=True)))}</p>'
                if gh.get("fetched_at") else "")
     return f"""
 <section class="sheet" id="github" aria-labelledby="github-h">
-  {section_head('github', 6, ui, g['title'], g['intro'])}
+  {section_head('github', 6, ui, g['title'])}
   <div class="gh-viz">
     {heat}
     {render_languages(gh, ui, exclude)}
   </div>
-  <h3 class="sub-title reveal">{esc(g['recent'])}</h3>
-  <div class="cards">{cards}</div>
   <p class="all-repos reveal"><a class="btn" href="{esc(p['links']['github'])}?tab=repositories">{icon('github')}{esc(g['all'])}</a></p>
   {fetched}
 </section>"""
@@ -856,7 +841,6 @@ def render_contact(c: dict, lang: str, ui: dict) -> str:
       {icon('mail')}<span><small>{esc(cu['email'])}</small><span class="js-mail-text">{esc(p['email']['user'])} [at] {esc(p['email']['domain'])}</span></span></a></li>
     <li><a class="contact-item" href="{esc(p['links']['linkedin'])}">{icon('linkedin')}<span><small>{esc(cu['linkedin'])}</small>antonio-ferreiro-couto</span></a></li>
     <li><a class="contact-item" href="{esc(p['links']['github'])}">{icon('github')}<span><small>{esc(cu['github'])}</small>@{esc(p['github']['user'])}</span></a></li>
-    <li><span class="contact-item">{icon('pin')}<span><small>{esc(cu['location'])}</small>{esc(p['location'][lang])}</span></span></li>
   </ul>
 </section>"""
 

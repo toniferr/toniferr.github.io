@@ -1,7 +1,7 @@
 {
   "id": "gitops-training-lab",
   "featured": true,
-  "order": 1,
+  "order": 2,
   "repo": "toniferr/gitops-training-lab",
   "title": "GitOps Training Lab",
   "links": {

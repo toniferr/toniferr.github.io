@@ -107,6 +107,14 @@ img, svg { display: block; max-width: 100%; }
 main { overflow-x: clip; }
 a { color: inherit; }
 p { margin: 0 0 1em; }
+/* Justified prose. Hyphenation keeps word spacing even in narrow columns (cards, timeline, mobile);
+   one-line labels are unaffected because the last line of a block is never stretched. */
+main p, main li, .footer p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  text-wrap: pretty;
+}
 h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; margin: 0; letter-spacing: -.01em; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 code { font-family: var(--font-mono); font-size: .86em; padding: .1em .35em; border-radius: 3px; background: var(--line-faint); color: var(--ink); }
@@ -354,7 +362,8 @@ code { font-family: var(--font-mono); font-size: .86em; padding: .1em .35em; bor
 
 /* ---------------------------------------------------------------- about */
 
-.about-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr) minmax(0, .9fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.about-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.about-body { max-width: 46rem; }
 .portrait { margin: 0; }
 .portrait-frame { position: relative; padding: 14px; border: 1px solid var(--line-dim); }
 .portrait-frame img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; filter: grayscale(1) contrast(1.05) brightness(.95); transition: filter .6s; }
@@ -373,17 +382,10 @@ code { font-family: var(--font-mono); font-size: .86em; padding: .1em .35em; bor
 .portrait figcaption { display: flex; justify-content: space-between; margin-top: 10px; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .about-body p { color: var(--ink-2); font-size: 1.05rem; }
 .about-body p:first-child::first-letter { font: 700 3.2em/0.8 var(--font-display); float: left; margin: .08em .1em 0 0; color: var(--accent); }
-.figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin: 32px 0 0; background: var(--line-faint); border: 1px solid var(--line-faint); }
-.fig { display: flex; flex-direction: column-reverse; padding: 16px 18px; background: var(--bg); }
+.figures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 32px 0 0; background: var(--line-faint); border: 1px solid var(--line-faint); }
+.fig { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding: 16px 18px; background: var(--bg); }
 .fig dd { margin: 0; font: 700 2.4rem/1 var(--font-display); color: var(--ink); letter-spacing: -.02em; }
 .fig dt { margin-top: 8px; font: .7rem var(--font-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
-.notes { position: relative; padding: 22px 24px; border: 1px solid var(--line-faint); background: var(--panel); }
-.notes::before { content: ""; position: absolute; left: -1px; top: -1px; width: 40px; height: 3px; background: var(--accent); }
-.notes h3 { font: 600 .8rem var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--line); margin-bottom: 16px; }
-.notes h3::after { content: ":"; }
-.notes ol { counter-reset: note; display: grid; gap: 14px; }
-.notes li { counter-increment: note; display: grid; grid-template-columns: 28px 1fr; font-size: .95rem; color: var(--ink-2); line-height: 1.5; }
-.notes li::before { content: counter(note) "."; font: 600 .85rem/1.7 var(--font-mono); color: var(--accent); }
 
 /* ---------------------------------------------------------------- projects */
 
@@ -537,7 +539,7 @@ code { font-family: var(--font-mono); font-size: .86em; padding: .1em .35em; bor
 /* ---------------------------------------------------------------- contact & footer */
 
 .contact .sheet-head h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
-.contact-list { display: grid; grid-template-columns: 1.35fr 1fr 1fr 1fr; gap: 14px; }
+.contact-list { display: grid; grid-template-columns: 1.35fr 1fr 1fr; gap: 14px; }
 .contact-item {
   display: flex; align-items: center; gap: 16px; height: 100%; padding: 20px; border: 1px solid var(--line-faint);
   background: var(--panel); text-decoration: none; transition: border-color .25s, transform .3s var(--ease);
@@ -577,12 +579,7 @@ a.contact-item:hover > .ic { color: var(--accent); border-color: var(--accent); 
 
 @media (max-width: 1100px) {
   .about-grid { grid-template-columns: 220px minmax(0, 1fr); }
-  .notes { grid-column: 1 / -1; }
   .sheet-ref { display: none; }
-}
-
-@media (max-width: 1100px) {
-  .contact-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 960px) {
@@ -613,6 +610,7 @@ a.contact-item:hover > .ic { color: var(--accent); border-color: var(--accent); 
   .project-diagram { overflow-x: auto; }
   .project-diagram .dg { min-width: 560px; }
   .about-grid { grid-template-columns: 1fr; }
+  .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .portrait { max-width: 260px; }
   .timeline::before { left: 7px; }
   .tl-item, .tl-item:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 0 36px; }

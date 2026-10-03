@@ -5,13 +5,8 @@
       "track": "work",
       "current": true,
       "start": 2024,
-      "role": "Software Engineer",
-      "org": { "es": "Softtek · Vigo", "en": "Softtek · Vigo, Spain", "gl": "Softtek · Vigo" },
-      "summary": {
-        "es": "Ingeniería de software sobre Microsoft Azure.",
-        "en": "Software engineering on Microsoft Azure.",
-        "gl": "Enxeñaría de software sobre Microsoft Azure."
-      },
+      "role": { "es": "Arquitecto de software", "en": "Software Architect", "gl": "Arquitecto de software" },
+      "org": { "es": "Softtek · equipo Microsoft · Vigo", "en": "Softtek · Microsoft team · Vigo, Spain", "gl": "Softtek · equipo Microsoft · Vigo" },
       "tags": ["Microsoft Azure"]
     },
     {

@@ -39,14 +39,6 @@
     "body": [
       "Son Toni, enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} desenvolvo software, primeiro en Bahia Software e dende 2021 en Softtek, onde cheguei a liderar tecnicamente proxectos para o sector retail. Hoxe céntrome nas decisións: como se parte un sistema, como se desprega e como se mantén sen medo."
     ],
-    "notesTitle": "Notas",
-    "notes": [
-      "As decisións importantes escríbense (ADR) e revísanse coma o código.",
-      "Git é a fonte de verdade: o que non está declarado, non existe.",
-      "Seguridade por defecto, non como fase final.",
-      "O simple que funciona gáñalle ao sofisticado que asusta.",
-      "Ensinar algo é a mellor proba de que se entende."
-    ],
     "figYears": "anos construíndo software",
     "figRepos": "repositorios públicos",
     "figStars": "estrelas en GitHub",
@@ -84,12 +76,10 @@
   },
   "github": {
     "title": "Actividade en GitHub",
-    "intro": "Datos reais, obtidos da API de GitHub en cada publicación do sitio.",
     "contributions": "{count} contribucións no último ano",
     "contribLabel": "Calendario de contribucións do último ano",
     "contribDay": "{count} contribucións o {date}",
     "languages": "Linguaxes por volume de código",
-    "recent": "Actividade recente",
     "all": "Ver todos os repositorios",
     "fetched": "Datos de GitHub do {date}",
     "less": "Menos",
@@ -102,8 +92,7 @@
     "body": "Arquitectura, plataforma, unha formación ou simplemente unha boa conversa técnica: escríbeme.",
     "email": "Email",
     "linkedin": "LinkedIn",
-    "github": "GitHub",
-    "location": "Localización"
+    "github": "GitHub"
   },
   "footer": {
     "built": "Feito con IA: HTML, CSS e JavaScript sen frameworks, xerado con Python e publicado con GitHub Actions.",

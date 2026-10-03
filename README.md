@@ -9,7 +9,7 @@ cada sección es una "hoja" del plano y los proyectos se explican con su propio 
   biblioteca estándar de Python 3.10+.
 - **Contenido separado de la presentación.** Todo el texto vive en `content/` como JSON. Para añadir un proyecto basta
   con añadir un fichero.
-- **Datos reales de GitHub.** Estrellas, lenguajes, repos recientes y calendario de contribuciones se obtienen en cada
+- **Datos reales de GitHub.** Estrellas, lenguajes y calendario de contribuciones se obtienen en cada
   publicación, y una ejecución semanal programada los mantiene al día.
 - **Seguro por defecto.** CSP estricta (solo recursos propios, sin JavaScript inline), fuentes servidas en local, sin CDN
   ni analítica, y las actions del workflow fijadas por SHA.
@@ -33,7 +33,7 @@ no cabe en su caja.
 
 ```text
 content/
-├── profile.json          nombre, enlaces, año de inicio profesional, repos excluidos de "actividad reciente"
+├── profile.json          nombre, enlaces, año de inicio profesional, repos excluidos de las estadísticas de lenguajes
 ├── i18n/{es,en,gl}.json  textos de la interfaz (deben tener las mismas claves)
 ├── projects/*.json       un fichero por proyecto (destacado o no)
 ├── career.json           trayectoria, en orden de aparición
@@ -60,7 +60,7 @@ Crea `content/projects/<id>.json`; para quitarlo, borra el fichero. Campos princ
   "summary":    { "es": "…", "en": "…", "gl": "…" },   // admite **negrita**, *cursiva* y `código`
   "highlights": { "es": ["…"], "en": ["…"], "gl": ["…"] },
   "stack": ["Java", "Kubernetes"],
-  "related": ["toniferr/otro-repo"],                   // se enlazan y se excluyen de "actividad reciente"
+  "related": ["toniferr/otro-repo"],                   // se enlazan como "repos del sistema"
   "diagram": { … }                                     // opcional, ver abajo
 }
 ```
