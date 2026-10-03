@@ -1,0 +1,72 @@
+{
+  "id": "cryptokit",
+  "featured": true,
+  "order": 3,
+  "repo": "toniferr/cryptoKit",
+  "title": "cryptoKit",
+  "links": {
+    "download": "https://github.com/toniferr/cryptoKit/releases"
+  },
+  "tagline": {
+    "es": "Aplicación de escritorio en Java para cifrar, descifrar y calcular hashes con múltiples algoritmos.",
+    "en": "A Java desktop application to encrypt, decrypt and hash data with multiple algorithms.",
+    "gl": "Aplicación de escritorio en Java para cifrar, descifrar e calcular hashes con múltiples algoritmos."
+  },
+  "summary": {
+    "es": "Herramienta de escritorio en Java Swing que reúne en una sola interfaz codificación (hexadecimal y Base64), hashes (MD5, SHA-1, SHA-2 y SHA-3) y cifrado simétrico (DES, AES y Blowfish en modos ECB, CBC y GCM), además de cifrado basado en contraseña con Jasypt. Se distribuye como ejecutable en GitHub Releases.",
+    "en": "A Java Swing desktop tool that brings together, in a single interface, encoding (hexadecimal and Base64), hashing (MD5, SHA-1, SHA-2 and SHA-3) and symmetric encryption (DES, AES and Blowfish in ECB, CBC and GCM modes), plus password-based encryption with Jasypt. Distributed as an executable on GitHub Releases.",
+    "gl": "Ferramenta de escritorio en Java Swing que reúne nunha soa interface codificación (hexadecimal e Base64), hashes (MD5, SHA-1, SHA-2 e SHA-3) e cifrado simétrico (DES, AES e Blowfish en modos ECB, CBC e GCM), ademais de cifrado baseado en contrasinal con Jasypt. Distribúese como executable en GitHub Releases."
+  },
+  "highlights": {
+    "es": [
+      "Proveedores JCA y Bouncy Castle para cubrir algoritmos que el JDK no trae.",
+      "AES en modo GCM (cifrado autenticado) y PBE con `PBEWithHMACSHA512AndAES_256`.",
+      "Integración continua con Travis CI y CircleCI, y cobertura con Codecov.",
+      "Software libre (GPL-3.0) con ejecutable descargable en Releases."
+    ],
+    "en": [
+      "JCA and Bouncy Castle providers to cover algorithms the JDK doesn't ship.",
+      "AES in GCM mode (authenticated encryption) and PBE with `PBEWithHMACSHA512AndAES_256`.",
+      "Continuous integration with Travis CI and CircleCI, coverage with Codecov.",
+      "Free software (GPL-3.0) with a downloadable executable on Releases."
+    ],
+    "gl": [
+      "Provedores JCA e Bouncy Castle para cubrir algoritmos que o JDK non trae.",
+      "AES en modo GCM (cifrado autenticado) e PBE con `PBEWithHMACSHA512AndAES_256`.",
+      "Integración continua con Travis CI e CircleCI, e cobertura con Codecov.",
+      "Software libre (GPL-3.0) con executable descargable en Releases."
+    ]
+  },
+  "stack": ["Java 11", "Swing", "JCA", "Bouncy Castle", "Jasypt", "Maven"],
+  "diagram": {
+    "cols": 34,
+    "rows": 20,
+    "groups": [
+      { "x": 26.5, "y": 0.5, "w": 7.5, "h": 19,
+        "label": { "es": "proveedores", "en": "providers", "gl": "provedores" } }
+    ],
+    "nodes": [
+      { "id": "user", "x": 0, "y": 8.5, "w": 6, "kind": "user",
+        "label": { "es": "usuario", "en": "user", "gl": "usuario" } },
+      { "id": "ui", "x": 9, "y": 8.5, "w": 7, "kind": "browser", "label": "Swing UI",
+        "sub": { "es": "escritorio", "en": "desktop", "gl": "escritorio" }, "accent": true },
+      { "id": "enc", "x": 18, "y": 2.5, "w": 7.5, "kind": "service", "label": "Encoding", "sub": "Hex · Base64" },
+      { "id": "hash", "x": 18, "y": 8.5, "w": 7.5, "kind": "service", "label": "Hash", "sub": "MD5 · SHA-2/3" },
+      { "id": "sym", "x": 18, "y": 14.5, "w": 7.5, "kind": "lock",
+        "label": { "es": "Simétrico", "en": "Symmetric", "gl": "Simétrico" }, "sub": "AES · DES · BF" },
+      { "id": "jdk", "x": 27.5, "y": 2.5, "w": 6, "kind": "cube", "label": "java.util", "sub": "JDK" },
+      { "id": "jca", "x": 27.5, "y": 8.5, "w": 6, "kind": "cube", "label": "JCA + BC", "sub": "Bouncy C." },
+      { "id": "jasypt", "x": 27.5, "y": 14.5, "w": 6, "kind": "cube", "label": "Jasypt", "sub": "PBE" }
+    ],
+    "edges": [
+      { "from": "user", "to": "ui" },
+      { "from": "ui", "to": "enc" },
+      { "from": "ui", "to": "hash" },
+      { "from": "ui", "to": "sym" },
+      { "from": "enc", "to": "jdk" },
+      { "from": "hash", "to": "jca" },
+      { "from": "sym", "to": "jca" },
+      { "from": "sym", "to": "jasypt" }
+    ]
+  }
+}

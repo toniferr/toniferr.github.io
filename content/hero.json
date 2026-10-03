@@ -1,0 +1,43 @@
+{
+  "cols": 40,
+  "rows": 27,
+  "groups": [
+    { "x": 18.5, "y": 0, "w": 12.5, "h": 27, "label": "services" }
+  ],
+  "nodes": [
+    { "id": "visitor", "x": 0, "y": 12, "w": 6, "kind": "user",
+      "label": { "es": "tú", "en": "you", "gl": "ti" }, "sub": "https" },
+    { "id": "gateway", "x": 8.5, "y": 11.5, "w": 8, "h": 4, "kind": "gateway", "accent": true,
+      "label": "api-gateway", "sub": "toni.ferreiro" },
+    { "id": "about", "x": 20, "y": 1.5, "w": 9.5, "kind": "service", "label": "profile.svc", "href": "#about",
+      "sub": { "es": "perfil", "en": "profile", "gl": "perfil" } },
+    { "id": "projects", "x": 20, "y": 5.75, "w": 9.5, "kind": "service", "label": "projects.svc", "href": "#projects",
+      "sub": { "es": "proyectos", "en": "projects", "gl": "proxectos" } },
+    { "id": "career", "x": 20, "y": 10, "w": 9.5, "kind": "service", "label": "career.svc", "href": "#career",
+      "sub": { "es": "trayectoria", "en": "career", "gl": "traxectoria" } },
+    { "id": "stack", "x": 20, "y": 14.25, "w": 9.5, "kind": "service", "label": "stack.svc", "href": "#stack",
+      "sub": { "es": "capas", "en": "layers", "gl": "capas" } },
+    { "id": "github", "x": 20, "y": 18.5, "w": 9.5, "kind": "service", "label": "github.adapter", "href": "#github",
+      "sub": { "es": "actividad", "en": "activity", "gl": "actividade" } },
+    { "id": "contact", "x": 20, "y": 22.75, "w": 9.5, "kind": "service", "label": "contact.svc", "href": "#contact",
+      "sub": { "es": "contacto", "en": "contact", "gl": "contacto" } },
+    { "id": "repos", "x": 33, "y": 5.75, "w": 7, "kind": "repo", "label": "repos", "sub": "git" },
+    { "id": "events", "x": 33, "y": 10, "w": 7, "kind": "db", "label": "event-log",
+      "sub": { "es": "desde 2016", "en": "since 2016", "gl": "dende 2016" } },
+    { "id": "ghapi", "x": 33, "y": 18.5, "w": 7, "kind": "external", "label": "api.github", "sub": "REST" },
+    { "id": "mail", "x": 33, "y": 22.75, "w": 7, "kind": "external", "label": "inbox", "sub": "smtp" }
+  ],
+  "edges": [
+    { "from": "visitor", "to": "gateway" },
+    { "from": "gateway", "to": "about" },
+    { "from": "gateway", "to": "projects" },
+    { "from": "gateway", "to": "career" },
+    { "from": "gateway", "to": "stack" },
+    { "from": "gateway", "to": "github" },
+    { "from": "gateway", "to": "contact" },
+    { "from": "projects", "to": "repos" },
+    { "from": "career", "to": "events" },
+    { "from": "github", "to": "ghapi" },
+    { "from": "contact", "to": "mail" }
+  ]
+}

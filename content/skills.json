@@ -1,0 +1,49 @@
+{
+  "crosscut": {
+    "label": { "es": "Arquitectura", "en": "Architecture", "gl": "Arquitectura" },
+    "items": [
+      { "es": "Microservicios", "en": "Microservices", "gl": "Microservizos" },
+      "DDD",
+      "Event-driven",
+      "ADR",
+      "System design",
+      "API First · OpenAPI",
+      { "es": "Patrones de diseño", "en": "Design patterns", "gl": "Patróns de deseño" },
+      "Clean Architecture",
+      { "es": "Seguridad de aplicaciones", "en": "Application security", "gl": "Seguridade de aplicacións" },
+      { "es": "Migración de legacy", "en": "Legacy modernisation", "gl": "Migración de legacy" }
+    ]
+  },
+  "layers": [
+    {
+      "id": "ai",
+      "label": { "es": "IA", "en": "AI", "gl": "IA" },
+      "items": ["LLMs", "RAG", { "es": "Agentes", "en": "Agents", "gl": "Axentes" }, "MCP", "Claude", "Gemini", "Azure AI Foundry"]
+    },
+    {
+      "id": "frontend",
+      "label": "Frontend",
+      "items": ["TypeScript", "React", "Next.js", "Vue", "Angular"]
+    },
+    {
+      "id": "backend",
+      "label": "Backend",
+      "items": ["Java", "Java EE", "Spring Boot", "Spring Cloud", "Spring Security", "JPA · Hibernate", "Python", "FastAPI", "Node.js"]
+    },
+    {
+      "id": "data",
+      "label": { "es": "Datos", "en": "Data", "gl": "Datos" },
+      "items": ["PostgreSQL", "MySQL", "MongoDB", "SQLite", "Solr", "Supabase"]
+    },
+    {
+      "id": "platform",
+      "label": { "es": "Plataforma", "en": "Platform", "gl": "Plataforma" },
+      "items": ["Kubernetes", "Flux", "GitOps", "Kustomize", "Helm", "Docker", "Terraform", "GitHub Actions", "Prometheus · Grafana"]
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud",
+      "items": ["AWS", "Azure", "Google Cloud"]
+    }
+  ]
+}

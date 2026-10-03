@@ -1,0 +1,72 @@
+{
+  "id": "gitops-training-lab",
+  "featured": true,
+  "order": 1,
+  "repo": "toniferr/gitops-training-lab",
+  "title": "GitOps Training Lab",
+  "links": {
+    "demo": "https://toniferr.github.io/gitops-training-lab/"
+  },
+  "tagline": {
+    "es": "Formación práctica e incremental de Kubernetes, Configuration as Code, GitOps y Flux.",
+    "en": "A hands-on, incremental training on Kubernetes, Configuration as Code, GitOps and Flux.",
+    "gl": "Formación práctica e incremental de Kubernetes, Configuration as Code, GitOps e Flux."
+  },
+  "summary": {
+    "es": "Material didáctico bilingüe para una formación interna: diez módulos de 30–40 minutos que construyen, capa a capa, una plataforma GitOps real sobre un clúster **kind**. Tres repositorios con responsabilidades separadas (guía, plataforma y aplicación) y una web de formación por edición publicada en GitHub Pages.",
+    "en": "Bilingual teaching material for an in-company training: ten 30–40 minute modules that build, layer by layer, a real GitOps platform on a **kind** cluster. Three repositories with separate responsibilities (guide, platform and application) and a training website per edition published on GitHub Pages.",
+    "gl": "Material didáctico bilingüe para unha formación interna: dez módulos de 30–40 minutos que constrúen, capa a capa, unha plataforma GitOps real sobre un clúster **kind**. Tres repositorios con responsabilidades separadas (guía, plataforma e aplicación) e unha web de formación por edición publicada en GitHub Pages."
+  },
+  "highlights": {
+    "es": [
+      "Un único laboratorio que evoluciona: cada módulo añade una capa al mismo sistema.",
+      "Cada edición es una rama `training/NN-*` en los tres repos, así que es reproducible.",
+      "Cada comando se ejecuta contra un clúster real antes de documentarlo.",
+      "Una web de formación sin build sustituye a las diapositivas."
+    ],
+    "en": [
+      "One evolving lab: every module adds a layer to the same system.",
+      "Each edition is a `training/NN-*` branch across the three repos, so it's reproducible.",
+      "Every command is run against a real cluster before it's documented.",
+      "A build-free training website replaces the slide decks."
+    ],
+    "gl": [
+      "Un único laboratorio que evoluciona: cada módulo engade unha capa ao mesmo sistema.",
+      "Cada edición é unha rama `training/NN-*` nos tres repos, así que é reproducible.",
+      "Cada comando execútase contra un clúster real antes de documentalo.",
+      "Unha web de formación sen build substitúe as diapositivas."
+    ]
+  },
+  "stack": ["Kubernetes", "Flux", "Kustomize", "kind", "Spring Boot", "Docker", "GitHub Actions", "Bash"],
+  "related": ["toniferr/cac-gitops-platform", "toniferr/java-api-gitops"],
+  "diagram": {
+    "cols": 34,
+    "rows": 20,
+    "groups": [
+      { "x": 0, "y": 0.5, "w": 12, "h": 19, "label": "GitHub" },
+      { "x": 15, "y": 7, "w": 19, "h": 12.5, "label": "kind cluster" }
+    ],
+    "nodes": [
+      { "id": "docs", "x": 1, "y": 2.5, "w": 10, "kind": "repo", "label": "gitops-training-lab",
+        "sub": { "es": "guía · web", "en": "guide · site", "gl": "guía · web" } },
+      { "id": "pages", "x": 17, "y": 2.5, "w": 10, "kind": "external", "label": "GitHub Pages",
+        "sub": { "es": "web por edición", "en": "site per edition", "gl": "web por edición" } },
+      { "id": "platform", "x": 1, "y": 9, "w": 10, "kind": "repo", "label": "cac-gitops-platform",
+        "sub": { "es": "plataforma", "en": "platform", "gl": "plataforma" } },
+      { "id": "app", "x": 1, "y": 14.5, "w": 10, "kind": "repo", "label": "java-api-gitops",
+        "sub": { "es": "app · manifiestos", "en": "app · manifests", "gl": "app · manifestos" } },
+      { "id": "source", "x": 17, "y": 9, "w": 9, "kind": "controller", "label": "source-controller",
+        "sub": "GitRepository" },
+      { "id": "kustomize", "x": 17.5, "y": 14.5, "w": 8, "kind": "controller", "label": "kustomize-ctrl",
+        "sub": "Kustomization" },
+      { "id": "api", "x": 28, "y": 14.5, "w": 5.5, "kind": "service", "label": "java-api", "sub": "Pods", "accent": true }
+    ],
+    "edges": [
+      { "from": "docs", "to": "pages", "label": "actions" },
+      { "from": "platform", "to": "source", "label": "pull" },
+      { "from": "app", "to": "source" },
+      { "from": "source", "to": "kustomize", "label": "artifact" },
+      { "from": "kustomize", "to": "api", "label": "apply" }
+    ]
+  }
+}

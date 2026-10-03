@@ -1,0 +1,115 @@
+{
+  "langName": "Galego",
+  "meta": {
+    "title": "Antonio Ferreiro · Arquitecto de software",
+    "description": "Portfolio de Antonio (Toni) Ferreiro, arquitecto de software en Galicia: arquitectura de sistemas, plataforma, Kubernetes e GitOps, Java e proxectos open source."
+  },
+  "nav": {
+    "skip": "Saltar ao contido",
+    "about": "Perfil",
+    "projects": "Proxectos",
+    "career": "Traxectoria",
+    "stack": "Stack",
+    "github": "GitHub",
+    "contact": "Contacto",
+    "menu": "Menú",
+    "theme": "Cambiar entre plano escuro e claro",
+    "language": "Idioma"
+  },
+  "hero": {
+    "kicker": "Arquitecto de software · Galicia",
+    "greeting": "Ola, son",
+    "lead": "Deseño sistemas que se entenden, se despregan sós e aguantan o paso do tempo. {years} anos construíndo software; hoxe, arquitectura, plataforma e GitOps.",
+    "ctaProjects": "Ver proxectos",
+    "ctaContact": "Falemos",
+    "diagramHint": "Este diagrama é o mapa do sitio: preme un servizo.",
+    "diagramLabel": "Diagrama de arquitectura interactivo que fai de mapa do portfolio",
+    "scroll": "Desprázate"
+  },
+  "titleblock": {
+    "project": "Proxecto",
+    "projectValue": "Portfolio persoal",
+    "author": "Autor",
+    "scale": "Escala",
+    "sheet": "Folla",
+    "rev": "Rev."
+  },
+  "about": {
+    "title": "Arquitectura cos pés en produción",
+    "body": [
+      "Son Toni, galego e enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} constrúo software de xeito profesional: cinco anos desenvolvendo aplicacións para a administración pública en Bahia Software e, dende 2021, en Softtek, onde pasei a liderar tecnicamente proxectos para o sector retail. Co paso dos anos, o meu traballo foise desprazando do código ás decisións: como se parte un sistema, como se desprega, como se observa e como se mantén sen medo.",
+      "Interésame a arquitectura que se pode verificar: decisións escritas, infraestrutura declarada en Git e plataformas que se reconcilian soas. Cando aprendo algo, documéntoo e ensínoo; por iso boa parte do meu GitHub son formacións e bases de coñecemento abertas."
+    ],
+    "notesTitle": "Notas",
+    "notes": [
+      "As decisións importantes escríbense (ADR) e revísanse coma o código.",
+      "Git é a fonte de verdade: o que non está declarado, non existe.",
+      "Seguridade por defecto, non como fase final.",
+      "O simple que funciona gáñalle ao sofisticado que asusta.",
+      "Ensinar algo é a mellor proba de que se entende."
+    ],
+    "figYears": "anos construíndo software",
+    "figRepos": "repositorios públicos",
+    "figStars": "estrelas en GitHub",
+    "figSince": "en GitHub dende",
+    "portrait": "Retrato de {name}"
+  },
+  "projects": {
+    "title": "Proxectos destacados",
+    "intro": "O que constrúo fóra do horario laboral, contado como o contaría un arquitecto: que problema resolve, como está montado e que decisións o sosteñen.",
+    "repo": "Código",
+    "demo": "Ver web",
+    "download": "Descargar",
+    "stars": "estrelas",
+    "updated": "Actualizado",
+    "since": "Dende",
+    "license": "Licenza",
+    "highlights": "Decisións clave",
+    "related": "Repos do sistema",
+    "diagram": "Diagrama de arquitectura de {name}",
+    "otherTitle": "Outros proxectos"
+  },
+  "career": {
+    "title": "Historial de revisións",
+    "intro": "Cada etapa, unha revisión do plano: traballo, formación e open source nunha mesma liña de tempo.",
+    "present": "actualidade",
+    "trackWork": "Profesional",
+    "trackOss": "Open source",
+    "trackEdu": "Formación",
+    "draft": "borrador"
+  },
+  "stack": {
+    "title": "Capas do stack",
+    "intro": "As tecnoloxías coas que traballo, ordenadas como o que son: capas dun sistema. A arquitectura atravésaas todas.",
+    "crosscut": "Transversal"
+  },
+  "github": {
+    "title": "Actividade en GitHub",
+    "intro": "Datos reais, obtidos da API de GitHub en cada publicación do sitio.",
+    "contributions": "{count} contribucións no último ano",
+    "contribLabel": "Calendario de contribucións do último ano",
+    "contribDay": "{count} contribucións o {date}",
+    "languages": "Linguaxes por volume de código",
+    "recent": "Actividade recente",
+    "all": "Ver todos os repositorios",
+    "fetched": "Datos de GitHub do {date}",
+    "less": "Menos",
+    "more": "Máis",
+    "other": "Outros",
+    "noDescription": "Sen descrición"
+  },
+  "contact": {
+    "title": "Construímos algo?",
+    "body": "Arquitectura, plataforma, unha formación ou simplemente unha boa conversa técnica: escríbeme.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "location": "Localización"
+  },
+  "footer": {
+    "built": "Feito a man: HTML, CSS e JavaScript sen frameworks, xerado con Python e publicado con GitHub Actions.",
+    "source": "Código fonte",
+    "top": "Volver arriba"
+  },
+  "months": ["xan", "feb", "mar", "abr", "mai", "xuñ", "xul", "ago", "set", "out", "nov", "dec"]
+}

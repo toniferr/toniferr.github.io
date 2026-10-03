@@ -1,0 +1,193 @@
+{
+  "_comment": "Entries render top to bottom in this order (newest first). track: work | oss | edu. Optional \"points\" renders as a bullet list. Entries with \"draft\": true show a badge locally and make `build.py --release` fail, so nothing unfinished gets published.",
+  "entries": [
+    {
+      "track": "work",
+      "current": true,
+      "start": 2024,
+      "role": "Software Engineer",
+      "org": { "es": "Softtek · Vigo", "en": "Softtek · Vigo, Spain", "gl": "Softtek · Vigo" },
+      "summary": {
+        "es": "Ingeniería de software sobre Microsoft Azure.",
+        "en": "Software engineering on Microsoft Azure.",
+        "gl": "Enxeñaría de software sobre Microsoft Azure."
+      },
+      "tags": ["Microsoft Azure"]
+    },
+    {
+      "track": "oss",
+      "start": 2026,
+      "role": "Architect Study Hub",
+      "link": "https://toniferr.github.io/architect-study-hub/",
+      "summary": {
+        "es": "Base de conocimiento abierta de arquitectura, plataforma, IA y cloud, con asistente de estudio con IA.",
+        "en": "Open knowledge base on architecture, platform, AI and cloud, with an AI study assistant.",
+        "gl": "Base de coñecemento aberta de arquitectura, plataforma, IA e cloud, con asistente de estudo con IA."
+      },
+      "tags": ["MkDocs", "Python", "LLMs"]
+    },
+    {
+      "track": "oss",
+      "start": 2026,
+      "role": "GitOps Training Lab",
+      "link": "https://toniferr.github.io/gitops-training-lab/",
+      "summary": {
+        "es": "Diseño e imparto una formación interna de diez módulos sobre Kubernetes, GitOps y Flux.",
+        "en": "I design and deliver a ten-module in-company training on Kubernetes, GitOps and Flux.",
+        "gl": "Deseño e imparto unha formación interna de dez módulos sobre Kubernetes, GitOps e Flux."
+      },
+      "tags": ["Kubernetes", "Flux", "Kustomize"]
+    },
+    {
+      "track": "edu",
+      "start": 2025,
+      "end": 2026,
+      "role": { "es": "Certificaciones", "en": "Certifications", "gl": "Certificacións" },
+      "org": "Microsoft · Anthropic",
+      "points": {
+        "es": ["Microsoft Certified: Azure AI Fundamentals (2026)", "Claude Code in Action, de Anthropic (2025)", "Microsoft Certified: Azure Fundamentals (2025)"],
+        "en": ["Microsoft Certified: Azure AI Fundamentals (2026)", "Claude Code in Action, by Anthropic (2025)", "Microsoft Certified: Azure Fundamentals (2025)"],
+        "gl": ["Microsoft Certified: Azure AI Fundamentals (2026)", "Claude Code in Action, de Anthropic (2025)", "Microsoft Certified: Azure Fundamentals (2025)"]
+      },
+      "tags": ["Azure", "Azure AI Foundry", "Claude Code"]
+    },
+    {
+      "track": "work",
+      "start": 2022,
+      "end": 2024,
+      "role": { "es": "Líder técnico", "en": "Tech Lead", "gl": "Líder técnico" },
+      "org": { "es": "Softtek · Vigo", "en": "Softtek · Vigo, Spain", "gl": "Softtek · Vigo" },
+      "summary": {
+        "es": "Responsable técnico de proyectos backend y frontend para una empresa del sector retail.",
+        "en": "Technical lead for backend and frontend projects for a retail company.",
+        "gl": "Responsable técnico de proxectos backend e frontend para unha empresa do sector retail."
+      },
+      "points": {
+        "es": [
+          "Definición de la arquitectura y evolución del stack, con especialización en seguridad.",
+          "Dos migraciones de sistemas legacy a un stack moderno.",
+          "Evaluación técnica de requisitos, riesgos y restricciones; calidad y escalabilidad del código.",
+          "Interlocución técnica con el cliente, documentación y entrevistas técnicas de contratación."
+        ],
+        "en": [
+          "Defined the architecture and evolved the stack, specialising in security.",
+          "Led two migrations from legacy systems to a modern stack.",
+          "Technical assessment of requirements, risks and constraints; code quality and scalability.",
+          "Technical point of contact for the client, documentation and technical hiring interviews."
+        ],
+        "gl": [
+          "Definición da arquitectura e evolución do stack, con especialización en seguridade.",
+          "Dúas migracións de sistemas legacy a un stack moderno.",
+          "Avaliación técnica de requisitos, riscos e restricións; calidade e escalabilidade do código.",
+          "Interlocución técnica co cliente, documentación e entrevistas técnicas de contratación."
+        ]
+      },
+      "tags": [{ "es": "Arquitectura", "en": "Architecture", "gl": "Arquitectura" }, { "es": "Seguridad", "en": "Security", "gl": "Seguridade" }, { "es": "Migración legacy", "en": "Legacy migration", "gl": "Migración legacy" }]
+    },
+    {
+      "track": "work",
+      "start": 2021,
+      "end": 2022,
+      "role": { "es": "Desarrollador de software sénior", "en": "Senior Software Developer", "gl": "Desenvolvedor de software sénior" },
+      "org": { "es": "Softtek · Santiago de Compostela", "en": "Softtek · Santiago de Compostela, Spain", "gl": "Softtek · Santiago de Compostela" },
+      "summary": {
+        "es": "Aplicaciones web Java para el sector retail: análisis e implantación de nuevas funcionalidades sobre el motor de búsqueda Solr.",
+        "en": "Java web applications for retail: analysis and delivery of new features on the Solr search engine.",
+        "gl": "Aplicacións web Java para o sector retail: análise e implantación de novas funcionalidades sobre o motor de busca Solr."
+      },
+      "tags": ["Java", "Solr"]
+    },
+    {
+      "track": "edu",
+      "start": 2020,
+      "current": true,
+      "role": { "es": "Formación continua", "en": "Continuous learning", "gl": "Formación continua" },
+      "org": { "es": "Cursos y repositorios Peeper* en GitHub", "en": "Courses and Peeper* repositories on GitHub", "gl": "Cursos e repositorios Peeper* en GitHub" },
+      "summary": {
+        "es": "Arquitectura moderna (DDD, eventos, microservicios), clean code, secure coding, patrones de diseño, Docker, observabilidad con Prometheus y Grafana, Spring Cloud en Azure y AWS. Buena parte con el código publicado.",
+        "en": "Modern architecture (DDD, events, microservices), clean code, secure coding, design patterns, Docker, observability with Prometheus and Grafana, Spring Cloud on Azure and AWS. Much of it with the code published.",
+        "gl": "Arquitectura moderna (DDD, eventos, microservizos), clean code, secure coding, patróns de deseño, Docker, observabilidade con Prometheus e Grafana, Spring Cloud en Azure e AWS. Boa parte co código publicado."
+      },
+      "tags": ["DDD", "Secure coding", "Docker", "Prometheus"]
+    },
+    {
+      "track": "oss",
+      "start": 2020,
+      "end": 2025,
+      "role": { "es": "Portfolio personal (Vue.js)", "en": "Personal portfolio (Vue.js)", "gl": "Portfolio persoal (Vue.js)" },
+      "summary": {
+        "es": "La versión anterior de esta web, en cuatro idiomas con vue-i18n. Hoy está en la rama `legacy-portfolio`.",
+        "en": "The previous version of this site, in four languages with vue-i18n. Now kept on the `legacy-portfolio` branch.",
+        "gl": "A versión anterior desta web, en catro idiomas con vue-i18n. Hoxe está na rama `legacy-portfolio`."
+      },
+      "tags": ["Vue", "i18n"]
+    },
+    {
+      "track": "oss",
+      "start": 2017,
+      "role": "cryptoKit",
+      "link": "https://github.com/toniferr/cryptoKit",
+      "summary": {
+        "es": "Aplicación de escritorio de cifrado en Java Swing; mi proyecto open source con más estrellas.",
+        "en": "A Java Swing encryption desktop app; my most-starred open-source project.",
+        "gl": "Aplicación de escritorio de cifrado en Java Swing; o meu proxecto open source con máis estrelas."
+      },
+      "tags": ["Java", "JCA", "Bouncy Castle"]
+    },
+    {
+      "track": "work",
+      "start": 2016,
+      "end": 2021,
+      "role": { "es": "Desarrollador de software", "en": "Software Developer", "gl": "Desenvolvedor de software" },
+      "org": { "es": "Bahia Software · Ourense", "en": "Bahia Software · Ourense, Spain", "gl": "Bahia Software · Ourense" },
+      "summary": {
+        "es": "Aplicaciones web Java para múltiples proyectos de la administración pública.",
+        "en": "Java web applications for multiple public-sector projects.",
+        "gl": "Aplicacións web Java para múltiples proxectos da administración pública."
+      },
+      "points": {
+        "es": [
+          "Desarrollo full stack y análisis técnico-funcional.",
+          "Revisión del trabajo de perfiles junior.",
+          "Despliegues, documentación (manuales, guías de instalación y planes de pruebas), soporte y formación a clientes."
+        ],
+        "en": [
+          "Full-stack development and technical-functional analysis.",
+          "Reviewed the work of junior developers.",
+          "Deployments, documentation (manuals, installation guides and test plans), client support and training."
+        ],
+        "gl": [
+          "Desenvolvemento full stack e análise técnico-funcional.",
+          "Revisión do traballo de perfís junior.",
+          "Despregamentos, documentación (manuais, guías de instalación e plans de probas), soporte e formación a clientes."
+        ]
+      },
+      "tags": ["Java EE", "Java SE", { "es": "Sector público", "en": "Public sector", "gl": "Sector público" }]
+    },
+    {
+      "track": "oss",
+      "start": 2015,
+      "role": "ProLeagues",
+      "link": "https://github.com/toniferr/ProLeagues",
+      "summary": {
+        "es": "Mi primer repositorio público: una app Android con SQLite.",
+        "en": "My first public repository: an Android app with SQLite.",
+        "gl": "O meu primeiro repositorio público: unha app Android con SQLite."
+      },
+      "tags": ["Android", "SQLite"]
+    },
+    {
+      "track": "edu",
+      "start": 2012,
+      "end": 2016,
+      "role": { "es": "Grado en Ingeniería Informática", "en": "BSc in Computer Engineering", "gl": "Grao en Enxeñaría Informática" },
+      "org": "Universidade de Vigo",
+      "summary": {
+        "es": "Trabajo Fin de Grado: simulador didáctico de memoria virtual, una aplicación web Java EE para el profesorado de Sistemas Operativos que simula la paginación de memoria.",
+        "en": "Final-year project: a teaching simulator for virtual memory, a Java EE web application for Operating Systems lecturers that simulates memory paging.",
+        "gl": "Traballo de Fin de Grao: simulador didáctico de memoria virtual, unha aplicación web Java EE para o profesorado de Sistemas Operativos que simula a paxinación de memoria."
+      },
+      "tags": ["Java EE"]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "langName": "English",
+  "meta": {
+    "title": "Antonio Ferreiro · Software Architect",
+    "description": "Portfolio of Antonio (Toni) Ferreiro, software architect based in Galicia, Spain: systems architecture, platform engineering, Kubernetes and GitOps, Java and open-source projects."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "about": "Profile",
+    "projects": "Projects",
+    "career": "Career",
+    "stack": "Stack",
+    "github": "GitHub",
+    "contact": "Contact",
+    "menu": "Menu",
+    "theme": "Switch between dark and light blueprint",
+    "language": "Language"
+  },
+  "hero": {
+    "kicker": "Software architect · Galicia, Spain",
+    "greeting": "Hi, I'm",
+    "lead": "I design systems that are easy to reason about, deploy themselves and age well. {years} years building software; these days, architecture, platform and GitOps.",
+    "ctaProjects": "See projects",
+    "ctaContact": "Let's talk",
+    "diagramHint": "This diagram is the site map: click a service.",
+    "diagramLabel": "Interactive architecture diagram that doubles as the portfolio's site map",
+    "scroll": "Scroll"
+  },
+  "titleblock": {
+    "project": "Project",
+    "projectValue": "Personal portfolio",
+    "author": "Author",
+    "scale": "Scale",
+    "sheet": "Sheet",
+    "rev": "Rev."
+  },
+  "about": {
+    "title": "Architecture grounded in production",
+    "body": [
+      "I'm Toni, from Galicia, with a degree in Computer Engineering from the University of Vigo. I've been building software professionally since {careerStart}: five years developing public-sector applications at Bahia Software and, since 2021, at Softtek, where I moved on to lead retail projects technically. Over the years my work has shifted from code to decisions: how a system is split, how it's deployed, how it's observed and how it's maintained without fear.",
+      "I care about architecture you can verify: written decisions, infrastructure declared in Git and platforms that reconcile themselves. When I learn something, I document it and teach it, which is why much of my GitHub is open training material and knowledge bases."
+    ],
+    "notesTitle": "Notes",
+    "notes": [
+      "Important decisions are written down (ADRs) and reviewed like code.",
+      "Git is the source of truth: if it isn't declared, it doesn't exist.",
+      "Secure by default, not as a final phase.",
+      "Simple and working beats sophisticated and scary.",
+      "Teaching something is the best proof that you understand it."
+    ],
+    "figYears": "years building software",
+    "figRepos": "public repositories",
+    "figStars": "GitHub stars",
+    "figSince": "on GitHub since",
+    "portrait": "Portrait of {name}"
+  },
+  "projects": {
+    "title": "Featured projects",
+    "intro": "What I build outside working hours, told the way an architect would: the problem it solves, how it's put together and the decisions that hold it up.",
+    "repo": "Code",
+    "demo": "Visit site",
+    "download": "Download",
+    "stars": "stars",
+    "updated": "Updated",
+    "since": "Since",
+    "license": "License",
+    "highlights": "Key decisions",
+    "related": "System repositories",
+    "diagram": "Architecture diagram of {name}",
+    "otherTitle": "Other projects"
+  },
+  "career": {
+    "title": "Revision history",
+    "intro": "Every stage, a new revision of the drawing: work, learning and open source on a single timeline.",
+    "present": "present",
+    "trackWork": "Professional",
+    "trackOss": "Open source",
+    "trackEdu": "Education",
+    "draft": "draft"
+  },
+  "stack": {
+    "title": "Stack layers",
+    "intro": "The technologies I work with, arranged as what they are: layers of a system. Architecture cuts across all of them.",
+    "crosscut": "Cross-cutting"
+  },
+  "github": {
+    "title": "GitHub activity",
+    "intro": "Real data, pulled from the GitHub API every time the site is published.",
+    "contributions": "{count} contributions in the last year",
+    "contribLabel": "Contribution calendar for the last year",
+    "contribDay": "{count} contributions on {date}",
+    "languages": "Languages by code volume",
+    "recent": "Recent activity",
+    "all": "See all repositories",
+    "fetched": "GitHub data from {date}",
+    "less": "Less",
+    "more": "More",
+    "other": "Other",
+    "noDescription": "No description"
+  },
+  "contact": {
+    "title": "Shall we build something?",
+    "body": "Architecture, platform, a training session or just a good technical conversation: drop me a line.",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "location": "Location"
+  },
+  "footer": {
+    "built": "Handmade: framework-free HTML, CSS and JavaScript, generated with Python and published with GitHub Actions.",
+    "source": "Source code",
+    "top": "Back to top"
+  },
+  "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+}
