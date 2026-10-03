@@ -37,8 +37,7 @@
   "about": {
     "title": "Architecture grounded in production",
     "body": [
-      "I'm Toni, from Galicia, with a degree in Computer Engineering from the University of Vigo. I've been building software professionally since {careerStart}: five years developing public-sector applications at Bahia Software and, since 2021, at Softtek, where I moved on to lead retail projects technically. Over the years my work has shifted from code to decisions: how a system is split, how it's deployed, how it's observed and how it's maintained without fear.",
-      "I care about architecture you can verify: written decisions, infrastructure declared in Git and platforms that reconcile themselves. When I learn something, I document it and teach it, which is why much of my GitHub is open training material and knowledge bases."
+      "I'm Toni, a computer engineer from the University of Vigo. I've been building software since {careerStart}, first at Bahia Software and, since 2021, at Softtek, where I went on to lead retail projects as technical lead. These days I focus on the decisions: how a system is split, how it's deployed and how it's maintained without fear."
     ],
     "notesTitle": "Notes",
     "notes": [
@@ -56,7 +55,7 @@
   },
   "projects": {
     "title": "Featured projects",
-    "intro": "What I build outside working hours, told the way an architect would: the problem it solves, how it's put together and the decisions that hold it up.",
+    "intro": "What I build outside working hours: the problem it solves, how it's put together and the decisions that hold it up.",
     "repo": "Code",
     "demo": "Visit site",
     "download": "Download",
@@ -107,7 +106,7 @@
     "location": "Location"
   },
   "footer": {
-    "built": "Handmade: framework-free HTML, CSS and JavaScript, generated with Python and published with GitHub Actions.",
+    "built": "Built with AI: framework-free HTML, CSS and JavaScript, generated with Python and published with GitHub Actions.",
     "source": "Source code",
     "top": "Back to top"
   },

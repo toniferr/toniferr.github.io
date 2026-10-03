@@ -5,7 +5,7 @@ Portfolio personal publicado en **https://toniferr.github.io/**, en español (po
 Su estética es la de un plano técnico vivo: el hero es un diagrama de arquitectura interactivo que hace de mapa del sitio,
 cada sección es una "hoja" del plano y los proyectos se explican con su propio diagrama, que se dibuja al hacer scroll.
 
-- **Sin frameworks ni dependencias.** HTML, CSS y JavaScript escritos a mano. El generador (`build.py`) usa solo la
+- **Sin frameworks ni dependencias.** HTML, CSS y JavaScript propios, desarrollados con IA (Claude Code). El generador (`build.py`) usa solo la
   biblioteca estándar de Python 3.10+.
 - **Contenido separado de la presentación.** Todo el texto vive en `content/` como JSON. Para añadir un proyecto basta
   con añadir un fichero.

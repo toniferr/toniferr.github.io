@@ -37,8 +37,7 @@
   "about": {
     "title": "Arquitectura cos pés en produción",
     "body": [
-      "Son Toni, galego e enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} constrúo software de xeito profesional: cinco anos desenvolvendo aplicacións para a administración pública en Bahia Software e, dende 2021, en Softtek, onde pasei a liderar tecnicamente proxectos para o sector retail. Co paso dos anos, o meu traballo foise desprazando do código ás decisións: como se parte un sistema, como se desprega, como se observa e como se mantén sen medo.",
-      "Interésame a arquitectura que se pode verificar: decisións escritas, infraestrutura declarada en Git e plataformas que se reconcilian soas. Cando aprendo algo, documéntoo e ensínoo; por iso boa parte do meu GitHub son formacións e bases de coñecemento abertas."
+      "Son Toni, enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} desenvolvo software, primeiro en Bahia Software e dende 2021 en Softtek, onde cheguei a liderar tecnicamente proxectos para o sector retail. Hoxe céntrome nas decisións: como se parte un sistema, como se desprega e como se mantén sen medo."
     ],
     "notesTitle": "Notas",
     "notes": [
@@ -56,7 +55,7 @@
   },
   "projects": {
     "title": "Proxectos destacados",
-    "intro": "O que constrúo fóra do horario laboral, contado como o contaría un arquitecto: que problema resolve, como está montado e que decisións o sosteñen.",
+    "intro": "O que constrúo fóra do horario laboral: que problema resolve, como está montado e que decisións o sosteñen.",
     "repo": "Código",
     "demo": "Ver web",
     "download": "Descargar",
@@ -107,7 +106,7 @@
     "location": "Localización"
   },
   "footer": {
-    "built": "Feito a man: HTML, CSS e JavaScript sen frameworks, xerado con Python e publicado con GitHub Actions.",
+    "built": "Feito con IA: HTML, CSS e JavaScript sen frameworks, xerado con Python e publicado con GitHub Actions.",
     "source": "Código fonte",
     "top": "Volver arriba"
   },
