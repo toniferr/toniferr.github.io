@@ -12,14 +12,34 @@
     {
       "track": "oss",
       "start": 2026,
-      "role": "Architect Study Hub",
-      "link": "https://toniferr.github.io/architect-study-hub/",
+      "role": { "es": "Webs didácticas", "en": "Teaching sites", "gl": "Webs didácticas" },
+      "link": "#project-teaching-sites",
       "summary": {
-        "es": "Base de conocimiento abierta de arquitectura, plataforma, IA y cloud, con asistente de estudio con IA.",
-        "en": "Open knowledge base on architecture, platform, AI and cloud, with an AI study assistant.",
-        "gl": "Base de coñecemento aberta de arquitectura, plataforma, IA e cloud, con asistente de estudo con IA."
+        "es": "Cuatro webs de estudio abiertas, publicadas en GitHub Pages:",
+        "en": "Four open study sites, published on GitHub Pages:",
+        "gl": "Catro webs de estudo abertas, publicadas en GitHub Pages:"
       },
-      "tags": ["MkDocs", "Python", "LLMs"]
+      "points": {
+        "es": [
+          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): arquitectura, plataforma, IA y cloud, con asistente de estudio con IA.",
+          "[Math of AI](https://toniferr.github.io/math-of-ai/es/): las matemáticas y la historia de la IA, de los autómatas a los LLM.",
+          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/es/): las matemáticas de la computación cuántica, con un simulador de cúbits.",
+          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/es/): un mapa del cálculo universitario y de dónde aparece en la informática."
+        ],
+        "en": [
+          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): architecture, platform, AI and cloud, with an AI study assistant.",
+          "[Math of AI](https://toniferr.github.io/math-of-ai/): the mathematics and history of AI, from automata to LLMs.",
+          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/): the mathematics of quantum computing, with a qubit simulator.",
+          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/): a map of university calculus and where it shows up in computing."
+        ],
+        "gl": [
+          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): arquitectura, plataforma, IA e cloud, con asistente de estudo con IA.",
+          "[Math of AI](https://toniferr.github.io/math-of-ai/es/): as matemáticas e a historia da IA, dos autómatas aos LLM.",
+          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/es/): as matemáticas da computación cuántica, cun simulador de cúbits.",
+          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/es/): un mapa do cálculo universitario e de onde aparece na informática."
+        ]
+      },
+      "tags": ["MkDocs", "Python", "Astro", "MathML", "LLMs"]
     },
     {
       "track": "oss",
@@ -165,9 +185,9 @@
       "role": "ProLeagues",
       "link": "https://github.com/toniferr/ProLeagues",
       "summary": {
-        "es": "Mi primer repositorio público: una app Android con SQLite.",
-        "en": "My first public repository: an Android app with SQLite.",
-        "gl": "O meu primeiro repositorio público: unha app Android con SQLite."
+        "es": "Aplicación Android con SQLite para un proyecto de la carrera en la Universidad de Vigo.",
+        "en": "Android application with SQLite for a degree project at the University of Vigo.",
+        "gl": "Aplicación Android con SQLite para un proxecto da carreira na Universidade de Vigo."
       },
       "tags": ["Android", "SQLite"]
     },

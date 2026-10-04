@@ -1,0 +1,113 @@
+{
+  "id": "teaching-sites",
+  "featured": true,
+  "order": 3,
+  "title": { "es": "Webs didácticas", "en": "Teaching sites", "gl": "Webs didácticas" },
+  "tagline": {
+    "es": "Cuatro webs abiertas para estudiar arquitectura de software y las matemáticas que hay detrás de la IA, la computación cuántica y la informática.",
+    "en": "Four open sites to study software architecture and the mathematics behind AI, quantum computing and computer science.",
+    "gl": "Catro webs abertas para estudar arquitectura de software e as matemáticas que hai detrás da IA, a computación cuántica e a informática."
+  },
+  "summary": {
+    "es": "Lo que estudio, lo publico. *Architect Study Hub* es mi cuaderno de arquitecto; *Math of AI*, *Math of Quantum* y *Calculus × Computing* explican las matemáticas de la informática actual con teoremas, historia y figuras interactivas. Todas son sitios estáticos que se publican con GitHub Actions en GitHub Pages.",
+    "en": "What I study, I publish. *Architect Study Hub* is my architect's notebook; *Math of AI*, *Math of Quantum* and *Calculus × Computing* explain the mathematics of modern computing with theorems, history and interactive figures. All of them are static sites published with GitHub Actions on GitHub Pages.",
+    "gl": "O que estudo, publícoo. *Architect Study Hub* é o meu caderno de arquitecto; *Math of AI*, *Math of Quantum* e *Calculus × Computing* explican as matemáticas da informática actual con teoremas, historia e figuras interactivas. Todas son sitios estáticos que se publican con GitHub Actions en GitHub Pages."
+  },
+  "sites": [
+    {
+      "title": "Architect Study Hub",
+      "url": "https://toniferr.github.io/architect-study-hub/",
+      "repo": "toniferr/architect-study-hub",
+      "stack": "MkDocs · Python · LLMs",
+      "desc": {
+        "es": "Base de conocimiento de arquitectura, plataforma, IA y cloud, con un asistente de estudio con IA que usa como contexto la página que estás leyendo.",
+        "en": "A knowledge base on architecture, platform, AI and cloud, with an AI study assistant that uses the page you are reading as context.",
+        "gl": "Base de coñecemento de arquitectura, plataforma, IA e cloud, cun asistente de estudo con IA que usa como contexto a páxina que estás a ler."
+      }
+    },
+    {
+      "title": "Math of AI",
+      "url": { "es": "https://toniferr.github.io/math-of-ai/es/", "en": "https://toniferr.github.io/math-of-ai/", "gl": "https://toniferr.github.io/math-of-ai/es/" },
+      "repo": "toniferr/math-of-ai",
+      "stack": { "es": "Python sin dependencias · MathML", "en": "Dependency-free Python · MathML", "gl": "Python sen dependencias · MathML" },
+      "desc": {
+        "es": "Por qué funciona la IA: de los circuitos y la máquina de Turing a los LLM, con teoremas, historia y demos (incluido un intérprete de Prolog en el navegador).",
+        "en": "Why AI works: from circuits and the Turing machine to LLMs, with theorems, history and demos (including a Prolog interpreter in the browser).",
+        "gl": "Por que funciona a IA: dos circuítos e a máquina de Turing aos LLM, con teoremas, historia e demos (incluído un intérprete de Prolog no navegador)."
+      }
+    },
+    {
+      "title": "Math of Quantum",
+      "url": { "es": "https://toniferr.github.io/math-of-quantum/es/", "en": "https://toniferr.github.io/math-of-quantum/", "gl": "https://toniferr.github.io/math-of-quantum/es/" },
+      "repo": "toniferr/math-of-quantum",
+      "stack": { "es": "Python sin dependencias · MathML", "en": "Dependency-free Python · MathML", "gl": "Python sen dependencias · MathML" },
+      "desc": {
+        "es": "Las matemáticas de la computación cuántica, de los cúbits a Shor y Grover, con demostraciones y un simulador de vector de estado.",
+        "en": "The mathematics of quantum computing, from qubits to Shor and Grover, with proofs and a state-vector simulator.",
+        "gl": "As matemáticas da computación cuántica, dos cúbits a Shor e Grover, con demostracións e un simulador de vector de estado."
+      }
+    },
+    {
+      "title": "Calculus × Computing",
+      "url": { "es": "https://toniferr.github.io/calculus-computing/es/", "en": "https://toniferr.github.io/calculus-computing/", "gl": "https://toniferr.github.io/calculus-computing/es/" },
+      "repo": "toniferr/calculus-computing",
+      "stack": "Astro · TypeScript",
+      "desc": {
+        "es": "Un mapa navegable del cálculo universitario y de dónde aparece cada idea en IA, gráficos, simulación y robótica.",
+        "en": "A navigable map of university calculus and where each idea shows up in AI, graphics, simulation and robotics.",
+        "gl": "Un mapa navegable do cálculo universitario e de onde aparece cada idea en IA, gráficos, simulación e robótica."
+      }
+    }
+  ],
+  "highlights": {
+    "es": [
+      "Teoría primero: teoremas con demostraciones plegables, y una figura interactiva donde una fórmula sola no basta.",
+      "Sitios estáticos sin backend, sin analítica y con CSP estricta; las matemáticas se convierten a MathML al compilar.",
+      "Tres stacks distintos a propósito: MkDocs, un generador propio en Python sin dependencias, y Astro con TypeScript.",
+      "Despliegue continuo con GitHub Actions; las webs matemáticas están en inglés y español."
+    ],
+    "en": [
+      "Theory first: theorems with foldable proofs, and an interactive figure wherever a formula alone is not enough.",
+      "Static sites with no backend, no analytics and a strict CSP; the maths is converted to MathML at build time.",
+      "Three different stacks on purpose: MkDocs, a dependency-free Python generator, and Astro with TypeScript.",
+      "Continuous deployment with GitHub Actions; the maths sites are in English and Spanish."
+    ],
+    "gl": [
+      "Teoría primeiro: teoremas con demostracións pregables, e unha figura interactiva onde unha fórmula soa non abonda.",
+      "Sitios estáticos sen backend, sen analítica e con CSP estrita; as matemáticas convértense a MathML ao compilar.",
+      "Tres stacks distintos a propósito: MkDocs, un xerador propio en Python sen dependencias, e Astro con TypeScript.",
+      "Despregamento continuo con GitHub Actions; as webs matemáticas están en inglés e español."
+    ]
+  },
+  "stack": ["Python", "MkDocs", "Astro", "TypeScript", "MathML", "GitHub Actions"],
+  "diagram": {
+    "cols": 34,
+    "rows": 20,
+    "groups": [
+      { "x": 0, "y": 0, "w": 12.5, "h": 19.5, "label": "github.com/toniferr" }
+    ],
+    "nodes": [
+      { "id": "ash", "x": 0.75, "y": 1.5, "w": 11, "kind": "repo", "label": "architect-study-hub", "sub": "MkDocs",
+        "href": "https://toniferr.github.io/architect-study-hub/" },
+      { "id": "moa", "x": 0.75, "y": 6, "w": 11, "kind": "repo", "label": "math-of-ai", "sub": "Python · MathML",
+        "href": "https://toniferr.github.io/math-of-ai/" },
+      { "id": "moq", "x": 0.75, "y": 10.5, "w": 11, "kind": "repo", "label": "math-of-quantum", "sub": "Python · MathML",
+        "href": "https://toniferr.github.io/math-of-quantum/" },
+      { "id": "cc", "x": 0.75, "y": 15, "w": 11, "kind": "repo", "label": "calculus-computing", "sub": "Astro · TS",
+        "href": "https://toniferr.github.io/calculus-computing/" },
+      { "id": "actions", "x": 15.5, "y": 8.25, "w": 8.5, "kind": "controller", "label": "GitHub Actions", "sub": "build + deploy", "accent": true },
+      { "id": "pages", "x": 26.5, "y": 3, "w": 7.5, "kind": "external", "label": "GitHub Pages",
+        "sub": { "es": "web estática", "en": "static site", "gl": "web estática" } },
+      { "id": "reader", "x": 26.5, "y": 13.5, "w": 7.5, "kind": "browser",
+        "label": { "es": "navegador", "en": "browser", "gl": "navegador" }, "sub": "es · en" }
+    ],
+    "edges": [
+      { "from": "ash", "to": "actions", "mid": 13.75 },
+      { "from": "moa", "to": "actions", "mid": 13.75 },
+      { "from": "moq", "to": "actions", "mid": 13.75 },
+      { "from": "cc", "to": "actions", "mid": 13.75, "label": "push" },
+      { "from": "actions", "to": "pages", "label": "deploy" },
+      { "from": "pages", "to": "reader", "label": "HTTPS" }
+    ]
+  }
+}

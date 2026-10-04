@@ -35,9 +35,9 @@
     "rev": "Rev."
   },
   "about": {
-    "title": "Architecture grounded in production",
+    "title": "Computer engineer",
     "body": [
-      "My name is Toni and I'm a computer engineer from the University of Vigo. I've been building software since {careerStart}, first at Bahia Software and, since 2021, at Softtek, where I went on to lead retail projects as technical lead. These days I focus on the decisions: how a system is split, how it's deployed and how it's maintained without fear."
+      "My name is Toni and I'm a computer engineer from the University of Vigo. I've been building software since {careerStart}, first at Bahia Software and, since 2021, at Softtek, where I went on to lead retail projects as technical lead. These days I focus on the decisions: how a system is split, how it's deployed and how it's maintained, without leaving programming aside."
     ],
     "figYears": "years building software",
     "figRepos": "public repositories",
@@ -67,7 +67,9 @@
     "trackWork": "Professional",
     "trackOss": "Open source",
     "trackEdu": "Education",
-    "draft": "draft"
+    "draft": "draft",
+    "filter": "Filter the timeline",
+    "filterAll": "All"
   },
   "stack": {
     "title": "Stack layers",

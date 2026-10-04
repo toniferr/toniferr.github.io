@@ -35,9 +35,9 @@
     "rev": "Rev."
   },
   "about": {
-    "title": "Arquitectura cos pés en produción",
+    "title": "Enxeñeiro informático",
     "body": [
-      "O meu nome é Toni e son enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} desenvolvo software, primeiro en Bahia Software e dende 2021 en Softtek, onde cheguei a liderar tecnicamente proxectos para o sector retail. Hoxe céntrome nas decisións: como se parte un sistema, como se desprega e como se mantén sen medo."
+      "O meu nome é Toni e son enxeñeiro informático pola Universidade de Vigo. Dende {careerStart} desenvolvo software, primeiro en Bahia Software e dende 2021 en Softtek, onde cheguei a liderar tecnicamente proxectos para o sector retail. Hoxe céntrome nas decisións: como se parte un sistema, como se desprega e como se mantén, sen deixar de lado a programación."
     ],
     "figYears": "anos construíndo software",
     "figRepos": "repositorios públicos",
@@ -67,7 +67,9 @@
     "trackWork": "Profesional",
     "trackOss": "Open source",
     "trackEdu": "Formación",
-    "draft": "borrador"
+    "draft": "borrador",
+    "filter": "Filtrar a traxectoria",
+    "filterAll": "Todo"
   },
   "stack": {
     "title": "Capas do stack",

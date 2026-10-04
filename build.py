@@ -131,8 +131,9 @@ def esc(value) -> str:
 
 
 def md(text: str) -> str:
-    """Escape, then allow **bold**, *em* and `code`."""
+    """Escape, then allow **bold**, *em*, `code` and [links](https://… or #anchor)."""
     out = esc(text)
+    out = re.sub(r"\[([^\]]+)\]\(((?:https://|#)[^)\s]+)\)", r'<a href="\2">\1</a>', out)
     out = re.sub(r"`([^`]+)`", r"<code>\1</code>", out)
     out = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", out)
     out = re.sub(r"(?<![\w*])\*([^*]+)\*(?![\w*])", r"<em>\1</em>", out)
@@ -525,7 +526,7 @@ def render_hero(c: dict, lang: str, ui: dict) -> str:
     <div><dt>{esc(t['author'])}</dt><dd>{esc(p['name'])}</dd></div>
     <div><dt>{esc(t['scale'])}</dt><dd>1:1</dd></div>
     <div><dt>{esc(t['rev'])}</dt><dd>{dt.date.today():%Y.%m}</dd></div>
-    <div><dt>{esc(t['sheet'])}</dt><dd>01 / 07</dd></div>
+    <div><dt>{esc(t['sheet'])}</dt><dd>01 / 06</dd></div>
   </dl>
   <a class="scroll-cue" href="#about" aria-label="{esc(h['scroll'])}"><span aria-hidden="true"></span></a>
 </section>"""
@@ -574,7 +575,9 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
     others = [p for p in c["projects"] if not p.get("featured")]
     arts = []
     for n, p in enumerate(featured, 1):
+        title = loc(p["title"], lang)
         r = idx.get(p.get("repo", "").lower(), {})
+        site_repos = [idx[s["repo"].lower()] for s in p.get("sites", []) if s.get("repo", "").lower() in idx]
         meta = []
         if r:
             meta.append(f'<li>{icon("star")}<span><strong>{r["stars"]}</strong> {esc(pu["stars"])}</span></li>')
@@ -582,6 +585,25 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
             meta.append(f'<li>{icon("flag")}<span>{esc(pu["since"])} {r["created_at"][:4]}</span></li>')
             if r.get("license") and r["license"] != "NOASSERTION":
                 meta.append(f'<li>{icon("scale")}<span>{esc(r["license"])}</span></li>')
+        elif site_repos:  # a group of sites: aggregate what GitHub knows about them
+            stars = sum(sr["stars"] for sr in site_repos)
+            pushed = max(sr["pushed_at"] for sr in site_repos)
+            since = min(sr["created_at"] for sr in site_repos)[:4]
+            meta.append(f'<li>{icon("star")}<span><strong>{stars}</strong> {esc(pu["stars"])}</span></li>')
+            meta.append(f'<li>{icon("clock")}<span>{esc(pu["updated"])} {esc(fmt_date(pushed, ui))}</span></li>')
+            meta.append(f'<li>{icon("flag")}<span>{esc(pu["since"])} {since}</span></li>')
+        sites = ""
+        if p.get("sites"):
+            rows = []
+            for s in p["sites"]:
+                sr = idx.get(s.get("repo", "").lower())
+                code = (f'<a class="site-code" href="https://github.com/{esc(s["repo"])}">{icon("code")}'
+                        f'{esc(pu["repo"])}</a>') if s.get("repo") else ""
+                star = f'<span class="site-stars">{icon("star")}{sr["stars"]}</span>' if sr else ""
+                rows.append(f'<li><a class="site-title" href="{esc(loc(s["url"], lang))}">{esc(loc(s["title"], lang))}{icon("ext")}</a>'
+                            f'<p>{md(loc(s["desc"], lang))}</p>'
+                            f'<p class="site-meta"><span>{esc(loc(s.get("stack", ""), lang))}</span>{star}{code}</p></li>')
+            sites = f'<ul class="sites">{"".join(rows)}</ul>'
         highlights = "".join(f"<li>{md(h)}</li>" for h in loc(p.get("highlights", []), lang))
         chips = "".join(f'<li>{esc(s)}</li>' for s in p.get("stack", []))
         related = ""
@@ -599,17 +621,18 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
         diagram = ""
         if p.get("diagram"):
             diagram = (f'<figure class="project-diagram">'
-                       f'{render_diagram(p["diagram"], lang, "p-" + p["id"], fmt(pu["diagram"], name=p["title"]))}'
-                       f'<figcaption>FIG. P-{n:02d} · {esc(p["title"])}</figcaption></figure>')
+                       f'{render_diagram(p["diagram"], lang, "p-" + p["id"], fmt(pu["diagram"], name=title))}'
+                       f'<figcaption>FIG. P-{n:02d} · {esc(title)}</figcaption></figure>')
         lang_bar = render_repo_languages(r.get("languages", {})) if r else ""
         arts.append(f"""
   <article class="project reveal{' flip' if n % 2 == 0 else ''}" id="project-{esc(p['id'])}" aria-labelledby="project-{esc(p['id'])}-h">
     <div class="project-text">
       <p class="project-no">P-{n:02d}</p>
-      <h3 id="project-{esc(p['id'])}-h">{esc(p['title'])}</h3>
+      <h3 id="project-{esc(p['id'])}-h">{esc(title)}</h3>
       <p class="tagline">{md(loc(p['tagline'], lang))}</p>
       <ul class="meta">{''.join(meta)}</ul>
       <p class="summary">{md(loc(p['summary'], lang))}</p>
+      {sites}
       {f'<h4>{esc(pu["highlights"])}</h4><ul class="highlights">{highlights}</ul>' if highlights else ''}
       <ul class="chips" aria-label="Stack">{chips}</ul>
       {lang_bar}
@@ -620,7 +643,7 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
   </article>""")
     other_html = ""
     if others:
-        cards = "".join(render_card(p["title"], loc(p["tagline"], lang), p.get("repo"), p.get("links", {}).get("demo"),
+        cards = "".join(render_card(loc(p["title"], lang), loc(p["tagline"], lang), p.get("repo"), p.get("links", {}).get("demo"),
                                     idx.get(p.get("repo", "").lower()), ui) for p in others)
         other_html = f'<h3 class="sub-title reveal">{esc(pu["otherTitle"])}</h3><div class="cards">{cards}</div>'
     return f"""
@@ -677,8 +700,10 @@ def render_career(c: dict, lang: str, ui: dict, release: bool) -> str:
         role = esc(loc(e["role"], lang))
         if link:
             role = f'<a href="{esc(link)}">{role}</a>'
+        # Zigzag layout by class, not :nth-child, so the JS filter can re-flow the visible entries.
+        side = (" is-right" if i % 2 else "") + (" is-after" if i else "")
         items.append(f"""
-    <li class="tl-item track-{e['track']}{' is-draft' if e.get('draft') else ''}{' is-current' if e.get('current') else ''} reveal">
+    <li class="tl-item track-{e['track']}{side}{' is-draft' if e.get('draft') else ''}{' is-current' if e.get('current') else ''} reveal" data-track="{e['track']}">
       <span class="tl-node" aria-hidden="true"></span>
       <div class="tl-card">
         <p class="tl-meta"><span class="tl-when">{esc(when)}</span><span class="tl-track">{esc(tracks[e['track']])}</span>
@@ -690,11 +715,14 @@ def render_career(c: dict, lang: str, ui: dict, release: bool) -> str:
         {f'<ul class="chips chips-sm">{tags}</ul>' if tags else ''}
       </div>
     </li>""")
-    legend = "".join(f'<li class="track-{k}"><span aria-hidden="true"></span>{esc(v)}</li>' for k, v in tracks.items())
+    # The legend doubles as a filter: with JS each entry is a toggle button; without JS it is just a legend.
+    buttons = [f'<li><button type="button" class="tl-all" data-filter="all" aria-pressed="true">{esc(cu["filterAll"])}</button></li>']
+    buttons += [f'<li class="track-{k}"><button type="button" data-filter="{k}" aria-pressed="false">'
+                f'<span aria-hidden="true"></span>{esc(v)}</button></li>' for k, v in tracks.items()]
     return f"""
 <section class="sheet" id="career" aria-labelledby="career-h">
   {section_head('career', 4, ui, cu['title'], cu['intro'])}
-  <ul class="tl-legend reveal">{legend}</ul>
+  <ul class="tl-legend reveal" role="group" aria-label="{esc(cu['filter'])}">{''.join(buttons)}</ul>
   <ol class="timeline">{''.join(items)}</ol>
 </section>"""
 
@@ -830,29 +858,30 @@ def render_github(c: dict, lang: str, ui: dict, gh: dict) -> str:
 </section>"""
 
 
-def render_contact(c: dict, lang: str, ui: dict) -> str:
+def render_footer(c: dict, ui: dict) -> str:
+    """Footer with the contact block (the nav and the hero diagram link to #contact)."""
+    f = ui["footer"]
     cu = ui["contact"]
     p = c["profile"]
     return f"""
-<section class="sheet contact" id="contact" aria-labelledby="contact-h">
-  {section_head('contact', 7, ui, cu['title'], cu['body'])}
-  <ul class="contact-list reveal">
-    <li><a class="contact-item js-mail" href="{esc(p['links']['linkedin'])}" data-u="{esc(p['email']['user'])}" data-d="{esc(p['email']['domain'])}">
-      {icon('mail')}<span><small>{esc(cu['email'])}</small><span class="js-mail-text">{esc(p['email']['user'])} [at] {esc(p['email']['domain'])}</span></span></a></li>
-    <li><a class="contact-item" href="{esc(p['links']['linkedin'])}">{icon('linkedin')}<span><small>{esc(cu['linkedin'])}</small>antonio-ferreiro-couto</span></a></li>
-    <li><a class="contact-item" href="{esc(p['links']['github'])}">{icon('github')}<span><small>{esc(cu['github'])}</small>@{esc(p['github']['user'])}</span></a></li>
-  </ul>
-</section>"""
-
-
-def render_footer(c: dict, ui: dict) -> str:
-    f = ui["footer"]
-    p = c["profile"]
-    return f"""
-<footer class="footer">
-  <p>© {dt.date.today().year} {esc(p['name'])}. {esc(f['built'])}</p>
-  <p class="footer-links"><a href="https://github.com/{esc(p['sourceRepo'])}">{icon('code')}{esc(f['source'])}</a>
-    <a href="#top">{icon('arrow-up')}{esc(f['top'])}</a></p>
+<footer class="footer" id="contact" aria-labelledby="contact-h">
+  <div class="footer-contact">
+    <div class="footer-cta">
+      <h2 id="contact-h">{esc(cu['title'])}</h2>
+      <p>{esc(cu['body'])}</p>
+    </div>
+    <ul class="contact-list">
+      <li><a class="contact-item js-mail" href="{esc(p['links']['linkedin'])}" data-u="{esc(p['email']['user'])}" data-d="{esc(p['email']['domain'])}">
+        {icon('mail')}<span><small>{esc(cu['email'])}</small><span class="js-mail-text">{esc(p['email']['user'])} [at] {esc(p['email']['domain'])}</span></span></a></li>
+      <li><a class="contact-item" href="{esc(p['links']['linkedin'])}">{icon('linkedin')}<span><small>{esc(cu['linkedin'])}</small>antonio-ferreiro-couto</span></a></li>
+      <li><a class="contact-item" href="{esc(p['links']['github'])}">{icon('github')}<span><small>{esc(cu['github'])}</small>@{esc(p['github']['user'])}</span></a></li>
+    </ul>
+  </div>
+  <div class="footer-base">
+    <p>© {dt.date.today().year} {esc(p['name'])}. {esc(f['built'])}</p>
+    <p class="footer-links"><a href="https://github.com/{esc(p['sourceRepo'])}">{icon('code')}{esc(f['source'])}</a>
+      <a href="#top">{icon('arrow-up')}{esc(f['top'])}</a></p>
+  </div>
 </footer>"""
 
 
@@ -899,7 +928,6 @@ def render_page(c: dict, lang: str, gh: dict, base: str, release: bool) -> str:
         render_career(c, lang, ui, release),
         render_stack(c, lang, ui),
         render_github(c, lang, ui, gh),
-        render_contact(c, lang, ui),
         "</main>",
         render_footer(c, ui),
         '<div class="readout" aria-hidden="true"><span class="rx">X 0000</span><span class="ry">Y 0000</span></div>',

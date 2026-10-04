@@ -295,6 +295,31 @@
   // Show the most recent weeks of the contribution calendar on narrow screens.
   $$(".heatmap-scroll").forEach(function (s) { s.scrollLeft = s.scrollWidth; });
 
+  // ------------------------------------------------------------ career filter (professional / open source / education)
+
+  var filterBtns = $$(".tl-legend button[data-filter]");
+  var tlItems = $$(".timeline .tl-item");
+  function applyFilter(track) {
+    filterBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === track)); });
+    var shown = 0;
+    tlItems.forEach(function (li) {
+      var show = track === "all" || li.getAttribute("data-track") === track;
+      li.hidden = !show;
+      if (!show) return;
+      // Re-flow the zigzag over the visible entries only.
+      li.classList.toggle("is-right", shown % 2 === 1);
+      li.classList.toggle("is-after", shown > 0);
+      li.classList.add("in-view");
+      shown++;
+    });
+  }
+  filterBtns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = b.getAttribute("data-filter");
+      applyFilter(b.getAttribute("aria-pressed") === "true" && f !== "all" ? "all" : f);
+    });
+  });
+
   // ------------------------------------------------------------ email, assembled client-side
 
   $$(".js-mail").forEach(function (a) {
