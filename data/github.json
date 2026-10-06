@@ -1,11 +1,11 @@
 {
- "fetched_at": "2026-10-03T14:00:37+00:00",
+ "fetched_at": "2026-10-06T09:42:59+00:00",
  "profile": {
   "login": "toniferr",
   "name": "Toni Ferreiro",
   "avatar_url": "https://avatars.githubusercontent.com/u/10086358?v=4",
   "html_url": "https://github.com/toniferr",
-  "public_repos": 26,
+  "public_repos": 29,
   "followers": 16,
   "created_at": "2014-12-05T11:23:50Z"
  },
@@ -18,17 +18,17 @@
    "homepage": "https://toniferr.github.io/architect-study-hub/",
    "language": "Python",
    "languages": {
-    "Python": 19261,
+    "Python": 23666,
     "PowerShell": 741
    },
-   "stars": 3,
+   "stars": 4,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "Apache-2.0",
    "topics": [],
    "created_at": "2026-09-28T10:00:17Z",
-   "pushed_at": "2026-09-28T11:26:35Z"
+   "pushed_at": "2026-10-06T09:11:15Z"
   },
   {
    "name": "cac-gitops-platform",
@@ -38,14 +38,36 @@
    "homepage": null,
    "language": null,
    "languages": {},
+   "stars": 2,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "license": "MIT",
+   "topics": [],
+   "created_at": "2026-06-20T15:19:39Z",
+   "pushed_at": "2026-10-04T14:53:39Z"
+  },
+  {
+   "name": "calculus-computing",
+   "full_name": "toniferr/calculus-computing",
+   "html_url": "https://github.com/toniferr/calculus-computing",
+   "description": "A navigable knowledge map of university calculus and of where every idea shows up in computing — AI, graphics, simulation, robotics, signal processing, scientific computing",
+   "homepage": "https://toniferr.github.io/calculus-computing/",
+   "language": "Astro",
+   "languages": {
+    "Astro": 114890,
+    "TypeScript": 105971,
+    "CSS": 24926,
+    "JavaScript": 1378
+   },
    "stars": 0,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [],
-   "created_at": "2026-06-20T15:19:39Z",
-   "pushed_at": "2026-09-21T15:19:09Z"
+   "created_at": "2026-10-04T18:38:50Z",
+   "pushed_at": "2026-10-04T19:48:31Z"
   },
   {
    "name": "cryptoKit",
@@ -89,7 +111,7 @@
    "name": "gitops-training-lab",
    "full_name": "toniferr/gitops-training-lab",
    "html_url": "https://github.com/toniferr/gitops-training-lab",
-   "description": "Bilingual teaching material for an incremental, hands-on introduction to Kubernetes, Configuration as Code (CaC), GitOps, and Flux.",
+   "description": "Material for an incremental, hands-on introduction to Kubernetes, Configuration as Code (CaC), GitOps, and Flux.",
    "homepage": "https://toniferr.github.io/gitops-training-lab/",
    "language": "JavaScript",
    "languages": {
@@ -98,14 +120,14 @@
     "Shell": 7692,
     "HTML": 5834
    },
-   "stars": 2,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "Apache-2.0",
    "topics": [],
    "created_at": "2026-09-19T12:05:09Z",
-   "pushed_at": "2026-09-30T15:10:06Z"
+   "pushed_at": "2026-10-04T14:56:05Z"
   },
   {
    "name": "java-api-gitops",
@@ -118,14 +140,58 @@
     "Java": 945,
     "Dockerfile": 362
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [],
    "created_at": "2026-06-20T22:01:53Z",
-   "pushed_at": "2026-09-21T15:02:08Z"
+   "pushed_at": "2026-10-04T14:50:43Z"
+  },
+  {
+   "name": "math-of-ai",
+   "full_name": "toniferr/math-of-ai",
+   "html_url": "https://github.com/toniferr/math-of-ai",
+   "description": "AI — from Turing and Shannon to Transformers and ChatGPT, one theorem at a time",
+   "homepage": "https://toniferr.github.io/math-of-ai/",
+   "language": "HTML",
+   "languages": {
+    "HTML": 301179,
+    "JavaScript": 236048,
+    "CSS": 52489,
+    "Python": 46590
+   },
+   "stars": 4,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "license": "Apache-2.0",
+   "topics": [],
+   "created_at": "2026-10-03T20:40:25Z",
+   "pushed_at": "2026-10-04T14:54:37Z"
+  },
+  {
+   "name": "math-of-quantum",
+   "full_name": "toniferr/math-of-quantum",
+   "html_url": "https://github.com/toniferr/math-of-quantum",
+   "description": null,
+   "homepage": null,
+   "language": "HTML",
+   "languages": {
+    "HTML": 195971,
+    "JavaScript": 98293,
+    "Python": 48074,
+    "CSS": 41775
+   },
+   "stars": 4,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "license": "Apache-2.0",
+   "topics": [],
+   "created_at": "2026-10-03T21:45:42Z",
+   "pushed_at": "2026-10-04T14:54:52Z"
   },
   {
    "name": "peeper-Actuator",
@@ -133,25 +199,23 @@
    "html_url": "https://github.com/toniferr/peeper-Actuator",
    "description": "Monolith application for on line course \"Ready for Production with Spring Boot Actuator\"",
    "homepage": "",
-   "language": "JavaScript",
+   "language": "Java",
    "languages": {
-    "JavaScript": 229201,
     "Java": 40433,
     "HTML": 20966,
-    "TSQL": 5293,
     "CSS": 2190
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": "GPL-3.0",
+   "license": "MIT",
    "topics": [
     "actuator",
     "spring-boot"
    ],
    "created_at": "2020-07-24T09:24:54Z",
-   "pushed_at": "2020-07-30T14:36:20Z"
+   "pushed_at": "2026-10-04T14:58:38Z"
   },
   {
    "name": "peeper-android",
@@ -163,7 +227,7 @@
    "languages": {
     "Java": 18624
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
@@ -188,7 +252,7 @@
     "C#": 282,
     "PHP": 193
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
@@ -209,14 +273,14 @@
     "Shell": 1830,
     "Scala": 7
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": "Apache-2.0",
+   "license": "MIT",
    "topics": [],
    "created_at": "2024-05-29T12:13:42Z",
-   "pushed_at": "2024-06-04T08:56:20Z"
+   "pushed_at": "2026-10-04T14:56:59Z"
   },
   {
    "name": "peeper-Artemis",
@@ -228,42 +292,18 @@
    "languages": {
     "Java": 2303
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "apache-artemis",
     "artemis",
     "java"
    ],
    "created_at": "2020-11-18T18:20:32Z",
-   "pushed_at": "2020-11-18T18:22:15Z"
-  },
-  {
-   "name": "peeper-Chat",
-   "full_name": "toniferr/peeper-Chat",
-   "html_url": "https://github.com/toniferr/peeper-Chat",
-   "description": "Source code in this repo is for on line course \"Master en JavaScript\"",
-   "homepage": "",
-   "language": "JavaScript",
-   "languages": {
-    "JavaScript": 1793,
-    "HTML": 1174
-   },
-   "stars": 0,
-   "forks": 0,
-   "fork": false,
-   "archived": false,
-   "license": null,
-   "topics": [
-    "chatbot",
-    "javascript",
-    "server"
-   ],
-   "created_at": "2021-02-23T18:50:15Z",
-   "pushed_at": "2021-02-24T19:40:29Z"
+   "pushed_at": "2026-10-04T14:58:24Z"
   },
   {
    "name": "peeper-LibGDX",
@@ -275,7 +315,7 @@
    "languages": {
     "Java": 11429
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
@@ -298,11 +338,11 @@
    "languages": {
     "Java": 1068
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": "Apache-2.0",
+   "license": "MIT",
    "topics": [
     "maven",
     "maven-archetype",
@@ -313,7 +353,7 @@
     "maven-repository"
    ],
    "created_at": "2020-06-24T12:39:15Z",
-   "pushed_at": "2022-02-10T04:46:22Z"
+   "pushed_at": "2026-10-04T14:58:09Z"
   },
   {
    "name": "peeper-PatternsDesign",
@@ -325,7 +365,7 @@
    "languages": {
     "Java": 55094
    },
-   "stars": 1,
+   "stars": 4,
    "forks": 0,
    "fork": false,
    "archived": false,
@@ -350,11 +390,11 @@
     "HTML": 18940,
     "Less": 8586
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": "GPL-3.0",
+   "license": "MIT",
    "topics": [
     "spring-boot",
     "spring-security",
@@ -364,7 +404,7 @@
     "spring-security-web"
    ],
    "created_at": "2021-07-05T17:58:17Z",
-   "pushed_at": "2022-06-28T21:08:57Z"
+   "pushed_at": "2026-10-04T14:59:13Z"
   },
   {
    "name": "peeper-SpringbootReactBackend",
@@ -376,17 +416,17 @@
    "languages": {
     "Java": 3505
    },
-   "stars": 1,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "api-rest",
     "spring-boot"
    ],
    "created_at": "2021-11-08T11:57:24Z",
-   "pushed_at": "2021-11-08T13:02:43Z"
+   "pushed_at": "2026-10-04T14:52:17Z"
   },
   {
    "name": "peeper-SpringbootReactFrontend",
@@ -400,40 +440,17 @@
     "HTML": 1721,
     "CSS": 930
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "react",
     "reactjs"
    ],
    "created_at": "2021-11-09T11:23:29Z",
-   "pushed_at": "2021-11-09T19:17:38Z"
-  },
-  {
-   "name": "peeper-TypeScript",
-   "full_name": "toniferr/peeper-TypeScript",
-   "html_url": "https://github.com/toniferr/peeper-TypeScript",
-   "description": "Source code in this repo is for on line course \"Master en JavaScript\"",
-   "homepage": "",
-   "language": "TypeScript",
-   "languages": {
-    "TypeScript": 2388,
-    "HTML": 598,
-    "JavaScript": 314
-   },
-   "stars": 0,
-   "forks": 0,
-   "fork": false,
-   "archived": false,
-   "license": "GPL-3.0",
-   "topics": [
-    "typescript"
-   ],
-   "created_at": "2021-01-29T18:52:45Z",
-   "pushed_at": "2021-02-01T17:29:41Z"
+   "pushed_at": "2026-10-04T14:52:33Z"
   },
   {
    "name": "peeper-Webodf",
@@ -448,17 +465,17 @@
     "HTML": 16267,
     "CSS": 4296
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "javascript",
     "webodf"
    ],
    "created_at": "2021-06-01T19:13:18Z",
-   "pushed_at": "2021-06-01T19:14:26Z"
+   "pushed_at": "2026-10-04T14:51:59Z"
   },
   {
    "name": "portalExpress",
@@ -469,14 +486,14 @@
    "language": "CSS",
    "languages": {
     "CSS": 2774,
-    "HTML": 1005,
+    "Pug": 1005,
     "JavaScript": 847
    },
-   "stars": 0,
+   "stars": 2,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "express",
     "expressjs",
@@ -485,13 +502,13 @@
     "pug-template-engine"
    ],
    "created_at": "2020-05-03T17:33:19Z",
-   "pushed_at": "2022-12-12T16:20:42Z"
+   "pushed_at": "2026-10-04T14:52:54Z"
   },
   {
    "name": "ProLeagues",
    "full_name": "toniferr/ProLeagues",
    "html_url": "https://github.com/toniferr/ProLeagues",
-   "description": "App android with SQLite",
+   "description": "Android application with SQLite for a degree project at the University of Vigo",
    "homepage": "",
    "language": "Java",
    "languages": {
@@ -508,6 +525,28 @@
    "pushed_at": "2016-01-07T19:03:09Z"
   },
   {
+   "name": "rithmomachia",
+   "full_name": "toniferr/rithmomachia",
+   "html_url": "https://github.com/toniferr/rithmomachia",
+   "description": "The battle of numbers — the medieval philosophers’ game, playable in the browser against the machine, with an illustrated codex on its history, rules and mathematics. Spanish and English.",
+   "homepage": "https://toniferr.github.io/rithmomachia/",
+   "language": "JavaScript",
+   "languages": {
+    "JavaScript": 175858,
+    "CSS": 31253,
+    "HTML": 3095,
+    "Python": 1599
+   },
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "license": null,
+   "topics": [],
+   "created_at": "2026-10-05T09:23:51Z",
+   "pushed_at": "2026-10-05T21:12:22Z"
+  },
+  {
    "name": "spring-boot-jwt",
    "full_name": "toniferr/spring-boot-jwt",
    "html_url": "https://github.com/toniferr/spring-boot-jwt",
@@ -516,21 +555,20 @@
    "language": "Java",
    "languages": {
     "Java": 67912,
-    "HTML": 52928,
-    "TSQL": 10604
+    "HTML": 52928
    },
-   "stars": 1,
+   "stars": 4,
    "forks": 0,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "MIT",
    "topics": [
     "jwt",
     "spring-boot",
     "web-token"
    ],
    "created_at": "2020-04-16T16:31:46Z",
-   "pushed_at": "2025-04-10T14:10:28Z"
+   "pushed_at": "2026-10-04T14:57:29Z"
   },
   {
    "name": "spring-boot-microservices",
@@ -542,7 +580,7 @@
    "languages": {
     "Java": 17301
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
@@ -571,39 +609,42 @@
    "homepage": null,
    "language": null,
    "languages": {},
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
    "archived": false,
    "license": null,
    "topics": [],
    "created_at": "2020-07-10T19:50:43Z",
-   "pushed_at": "2021-03-01T18:23:06Z"
+   "pushed_at": "2026-10-06T08:39:42Z"
   },
   {
    "name": "toniferr.github.io",
    "full_name": "toniferr/toniferr.github.io",
    "html_url": "https://github.com/toniferr/toniferr.github.io",
-   "description": "Portfolio personal. Código implementado en el repositorio dev.toniferr.github.io  [2020-2025]",
+   "description": "Personal portfolio: software architecture, platform, and GitOps. Created with Python and published with GitHub Actions.",
    "homepage": "https://toniferr.github.io/",
-   "language": "HTML",
+   "language": "Python",
    "languages": {
-    "HTML": 956
+    "Python": 49043,
+    "CSS": 38856,
+    "JavaScript": 13405,
+    "HTML": 1544
    },
-   "stars": 1,
+   "stars": 4,
    "forks": 2,
    "fork": false,
    "archived": false,
-   "license": null,
+   "license": "Apache-2.0",
    "topics": [],
    "created_at": "2020-07-08T16:24:15Z",
-   "pushed_at": "2022-05-30T19:14:42Z"
+   "pushed_at": "2026-10-04T20:21:10Z"
   },
   {
    "name": "vue.toniferr.github.io",
    "full_name": "toniferr/vue.toniferr.github.io",
    "html_url": "https://github.com/toniferr/vue.toniferr.github.io",
-   "description": "Desarrollo con framework Vue.js de mi portfolio personal [2020-2025]",
+   "description": "DEPREADO - Desarrollo con framework Vue.js de mi portfolio personal [2020-2025]",
    "homepage": "https://toniferr.github.io",
    "language": "Vue",
    "languages": {
@@ -613,10 +654,10 @@
     "HTML": 650,
     "Shell": 55
    },
-   "stars": 0,
+   "stars": 3,
    "forks": 0,
    "fork": false,
-   "archived": false,
+   "archived": true,
    "license": "MIT",
    "topics": [
     "vue",
@@ -624,46 +665,35 @@
    ],
    "created_at": "2020-07-05T10:03:53Z",
    "pushed_at": "2023-03-05T10:13:49Z"
+  },
+  {
+   "name": "wahoo",
+   "full_name": "toniferr/wahoo",
+   "html_url": "https://github.com/toniferr/wahoo",
+   "description": "A small but complete compiler, written in Rust, for Wahoo, a statically typed language from the Mushroom Kingdom, targeting WebAssembly.",
+   "homepage": "https://toniferr.github.io/wahoo/",
+   "language": "HTML",
+   "languages": {
+    "HTML": 200311,
+    "Rust": 154188,
+    "JavaScript": 69392,
+    "CSS": 42594,
+    "Python": 29649,
+    "Shell": 1049
+   },
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "license": null,
+   "topics": [],
+   "created_at": "2026-10-06T09:06:21Z",
+   "pushed_at": "2026-10-06T09:32:07Z"
   }
  ],
  "contributions": {
-  "total": 1096,
+  "total": 1126,
   "days": [
-   {
-    "date": "2025-09-28",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-09-29",
-    "count": 3,
-    "level": 1
-   },
-   {
-    "date": "2025-09-30",
-    "count": 14,
-    "level": 3
-   },
-   {
-    "date": "2025-10-01",
-    "count": 27,
-    "level": 4
-   },
-   {
-    "date": "2025-10-02",
-    "count": 17,
-    "level": 3
-   },
-   {
-    "date": "2025-10-03",
-    "count": 5,
-    "level": 1
-   },
-   {
-    "date": "2025-10-04",
-    "count": 0,
-    "level": 0
-   },
    {
     "date": "2025-10-05",
     "count": 0,
@@ -672,7 +702,7 @@
    {
     "date": "2025-10-06",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2025-10-07",
@@ -687,7 +717,7 @@
    {
     "date": "2025-10-09",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2025-10-10",
@@ -707,7 +737,7 @@
    {
     "date": "2025-10-13",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2025-10-14",
@@ -817,7 +847,7 @@
    {
     "date": "2025-11-04",
     "count": 18,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2025-11-05",
@@ -882,12 +912,12 @@
    {
     "date": "2025-11-17",
     "count": 18,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2025-11-18",
     "count": 29,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2025-11-19",
@@ -922,7 +952,7 @@
    {
     "date": "2025-11-25",
     "count": 18,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2025-11-26",
@@ -937,7 +967,7 @@
    {
     "date": "2025-11-28",
     "count": 12,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2025-11-29",
@@ -1277,12 +1307,12 @@
    {
     "date": "2026-02-04",
     "count": 29,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-02-05",
     "count": 23,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-02-06",
@@ -1312,7 +1342,7 @@
    {
     "date": "2026-02-11",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-02-12",
@@ -1377,7 +1407,7 @@
    {
     "date": "2026-02-24",
     "count": 22,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-02-25",
@@ -1387,7 +1417,7 @@
    {
     "date": "2026-02-26",
     "count": 17,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-02-27",
@@ -1447,7 +1477,7 @@
    {
     "date": "2026-03-10",
     "count": 9,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-03-11",
@@ -1547,7 +1577,7 @@
    {
     "date": "2026-03-30",
     "count": 7,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-03-31",
@@ -1597,7 +1627,7 @@
    {
     "date": "2026-04-09",
     "count": 18,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2026-04-10",
@@ -1617,7 +1647,7 @@
    {
     "date": "2026-04-13",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-04-14",
@@ -1657,12 +1687,12 @@
    {
     "date": "2026-04-21",
     "count": 16,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-04-22",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-04-23",
@@ -1697,12 +1727,12 @@
    {
     "date": "2026-04-29",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-04-30",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-05-01",
@@ -1772,7 +1802,7 @@
    {
     "date": "2026-05-14",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-05-15",
@@ -1832,7 +1862,7 @@
    {
     "date": "2026-05-26",
     "count": 9,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-05-27",
@@ -1867,12 +1897,12 @@
    {
     "date": "2026-06-02",
     "count": 9,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-06-03",
     "count": 7,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-06-04",
@@ -1907,7 +1937,7 @@
    {
     "date": "2026-06-10",
     "count": 16,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-06-11",
@@ -1937,12 +1967,12 @@
    {
     "date": "2026-06-16",
     "count": 15,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-06-17",
     "count": 12,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-06-18",
@@ -1956,8 +1986,8 @@
    },
    {
     "date": "2026-06-20",
-    "count": 8,
-    "level": 2
+    "count": 7,
+    "level": 1
    },
    {
     "date": "2026-06-21",
@@ -1967,12 +1997,12 @@
    {
     "date": "2026-06-22",
     "count": 29,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-06-23",
     "count": 22,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-06-24",
@@ -1986,7 +2016,7 @@
    },
    {
     "date": "2026-06-26",
-    "count": 2,
+    "count": 1,
     "level": 1
    },
    {
@@ -2007,12 +2037,12 @@
    {
     "date": "2026-06-30",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-07-01",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-07-02",
@@ -2087,7 +2117,7 @@
    {
     "date": "2026-07-16",
     "count": 13,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-07-17",
@@ -2177,7 +2207,7 @@
    {
     "date": "2026-08-03",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-08-04",
@@ -2192,12 +2222,12 @@
    {
     "date": "2026-08-06",
     "count": 19,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2026-08-07",
     "count": 20,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-08-08",
@@ -2282,7 +2312,7 @@
    {
     "date": "2026-08-24",
     "count": 9,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-08-25",
@@ -2302,7 +2332,7 @@
    {
     "date": "2026-08-28",
     "count": 7,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-08-29",
@@ -2367,7 +2397,7 @@
    {
     "date": "2026-09-10",
     "count": 8,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-09-11",
@@ -2397,7 +2427,7 @@
    {
     "date": "2026-09-16",
     "count": 16,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-09-17",
@@ -2422,7 +2452,7 @@
    {
     "date": "2026-09-21",
     "count": 6,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-09-22",
@@ -2472,7 +2502,7 @@
    {
     "date": "2026-10-01",
     "count": 12,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-10-02",
@@ -2481,8 +2511,23 @@
    },
    {
     "date": "2026-10-03",
-    "count": 0,
-    "level": 0
+    "count": 8,
+    "level": 1
+   },
+   {
+    "date": "2026-10-04",
+    "count": 38,
+    "level": 4
+   },
+   {
+    "date": "2026-10-05",
+    "count": 39,
+    "level": 4
+   },
+   {
+    "date": "2026-10-06",
+    "count": 13,
+    "level": 2
    }
   ]
  }

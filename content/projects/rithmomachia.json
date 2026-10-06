@@ -1,0 +1,79 @@
+{
+  "id": "rithmomachia",
+  "featured": true,
+  "order": 4,
+  "repo": "toniferr/rithmomachia",
+  "title": "Rithmomachia",
+  "links": {
+    "demo": {
+      "es": "https://toniferr.github.io/rithmomachia/?lang=es",
+      "en": "https://toniferr.github.io/rithmomachia/",
+      "gl": "https://toniferr.github.io/rithmomachia/?lang=es"
+    },
+    "demoLabel": { "es": "Jugar", "en": "Play", "gl": "Xogar" },
+    "more": [
+      { "label": "itch.io", "url": "https://toniferr.itch.io/rithmomachia" }
+    ]
+  },
+  "tagline": {
+    "es": "La «batalla de los números» de los filósofos medievales, jugable en el navegador contra la máquina, con un códice ilustrado sobre su historia, sus reglas y sus matemáticas.",
+    "en": "The medieval philosophers' \"battle of numbers\", playable in the browser against the machine, with an illustrated codex on its history, rules and mathematics.",
+    "gl": "A «batalla dos números» dos filósofos medievais, xogable no navegador contra a máquina, cun códice ilustrado sobre a súa historia, as súas regras e as súas matemáticas."
+  },
+  "summary": {
+    "es": "En la *Rithmomachia* las piezas son números y se captura con aritmética: igualdades, sumas, productos y progresiones de la tradición de Boecio. Esta versión reconstruye sus reglas en un **motor puro de JavaScript** que comparten la interfaz, la IA y los tests, con estética de manuscrito iluminado. Se juega en la web, se instala como app que funciona sin conexión y está publicada en **itch.io**.",
+    "en": "In *Rithmomachia* the pieces are numbers and captures are arithmetic: equalities, sums, products and progressions from the tradition of Boethius. This version rebuilds its rules in a **pure JavaScript engine** shared by the interface, the AI and the tests, wrapped in an illuminated-manuscript look. It is played on the web, installs as an app that works offline, and is published on **itch.io**.",
+    "gl": "Na *Rithmomachia* as pezas son números e captúrase con aritmética: igualdades, sumas, produtos e progresións da tradición de Boecio. Esta versión reconstrúe as súas regras nun **motor puro de JavaScript** que comparten a interface, a IA e os tests, con estética de manuscrito iluminado. Xógase na web, instálase como app que funciona sen conexión e está publicada en **itch.io**."
+  },
+  "highlights": {
+    "es": [
+      "Una máquina en un Web Worker: negamax con poda alfa-beta, profundización iterativa y límite de tiempo, en tres niveles de dificultad.",
+      "Un único motor de reglas para el juego, la IA, los diagramas del códice y los tests, así que lo que se explica no puede desincronizarse de lo que se juega.",
+      "App instalable (PWA) con *service worker* que precarga todo el sitio; gratis en la web y «paga lo que quieras» en itch.io.",
+      "Sin build ni dependencias, con CSP estricta y fuentes propias; en inglés y español."
+    ],
+    "en": [
+      "A machine in a Web Worker: negamax with alpha-beta pruning, iterative deepening and a time limit, at three difficulty levels.",
+      "A single rules engine for the game, the AI, the codex diagrams and the tests, so what is explained cannot drift from what is played.",
+      "An installable app (PWA) whose *service worker* precaches the whole site; free on the web and pay-what-you-want on itch.io.",
+      "No build step and no dependencies, a strict CSP and self-hosted fonts; in English and Spanish."
+    ],
+    "gl": [
+      "Unha máquina nun Web Worker: negamax con poda alfa-beta, afondamento iterativo e límite de tempo, en tres niveis de dificultade.",
+      "Un único motor de regras para o xogo, a IA, os diagramas do códice e os tests, así que o que se explica non pode desincronizarse do que se xoga.",
+      "App instalable (PWA) cun *service worker* que precarga todo o sitio; de balde na web e «paga o que queiras» en itch.io.",
+      "Sen build nin dependencias, con CSP estrita e fontes propias; en inglés e español."
+    ]
+  },
+  "stack": ["JavaScript", "Web Workers", "SVG", "PWA", "Node.js", "GitHub Actions"],
+  "diagram": {
+    "cols": 34,
+    "rows": 20,
+    "groups": [
+      { "x": 0, "y": 0, "w": 22.5, "h": 19.5, "label": { "es": "navegador", "en": "browser", "gl": "navegador" } }
+    ],
+    "nodes": [
+      { "id": "ui", "x": 1, "y": 1.5, "w": 9, "kind": "browser",
+        "label": { "es": "tablero", "en": "board", "gl": "taboleiro" }, "sub": "SVG" },
+      { "id": "engine", "x": 13, "y": 1.5, "w": 8.5, "kind": "service", "label": "engine.js", "accent": true,
+        "sub": { "es": "reglas", "en": "rules", "gl": "regras" } },
+      { "id": "save", "x": 1, "y": 8, "w": 9, "kind": "db", "label": "localStorage",
+        "sub": { "es": "partida", "en": "saved game", "gl": "partida" } },
+      { "id": "ai", "x": 13, "y": 8, "w": 8.5, "kind": "controller", "label": "ai-worker", "sub": "negamax α-β" },
+      { "id": "codex", "x": 1, "y": 14.5, "w": 9, "kind": "doc",
+        "label": { "es": "códice", "en": "codex", "gl": "códice" },
+        "sub": { "es": "7 capítulos", "en": "7 chapters", "gl": "7 capítulos" } },
+      { "id": "sw", "x": 13, "y": 14.5, "w": 8.5, "kind": "controller", "label": "sw.js", "sub": "offline · PWA" },
+      { "id": "tests", "x": 25.5, "y": 1.5, "w": 8.5, "kind": "repo", "label": "node --test",
+        "sub": { "es": "motor · IA", "en": "engine · AI", "gl": "motor · IA" } },
+      { "id": "pages", "x": 25.5, "y": 14.5, "w": 8.5, "kind": "external", "label": "GitHub Pages", "sub": "es · en" }
+    ],
+    "edges": [
+      { "from": "ui", "to": "engine", "label": { "es": "jugada", "en": "move", "gl": "xogada" } },
+      { "from": "ai", "to": "engine", "label": "import" },
+      { "from": "ui", "to": "save" },
+      { "from": "tests", "to": "engine" },
+      { "from": "pages", "to": "sw", "label": "HTTPS" }
+    ]
+  }
+}

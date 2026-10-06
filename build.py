@@ -512,10 +512,6 @@ def render_hero(c: dict, lang: str, ui: dict) -> str:
     </h1>
     <div class="dim-line" aria-hidden="true"><span>{years} {esc(ui['about']['figYears'].split(' ')[0])}</span></div>
     <p class="lead">{md(fmt(h['lead'], years=years))}</p>
-    <div class="cta">
-      <a class="btn btn-primary" href="#projects">{esc(h['ctaProjects'])}</a>
-      <a class="btn" href="#contact">{esc(h['ctaContact'])}</a>
-    </div>
   </div>
   <figure class="hero-diagram">
     {diagram}
@@ -615,9 +611,12 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
         if p.get("repo"):
             actions.append(f'<a class="btn btn-sm" href="https://github.com/{esc(p["repo"])}">{icon("code")}{esc(pu["repo"])}</a>')
         if links.get("demo"):
-            actions.append(f'<a class="btn btn-sm btn-primary" href="{esc(links["demo"])}">{icon("ext")}{esc(pu["demo"])}</a>')
+            label = loc(links["demoLabel"], lang) if links.get("demoLabel") else pu["demo"]
+            actions.append(f'<a class="btn btn-sm btn-primary" href="{esc(loc(links["demo"], lang))}">{icon("ext")}{esc(label)}</a>')
         if links.get("download"):
             actions.append(f'<a class="btn btn-sm btn-primary" href="{esc(links["download"])}">{icon("download")}{esc(pu["download"])}</a>')
+        for extra in links.get("more", []):   # other places to find it (a store, a second site…)
+            actions.append(f'<a class="btn btn-sm" href="{esc(loc(extra["url"], lang))}">{icon("ext")}{esc(loc(extra["label"], lang))}</a>')
         diagram = ""
         if p.get("diagram"):
             diagram = (f'<figure class="project-diagram">'
@@ -643,7 +642,7 @@ def render_projects(c: dict, lang: str, ui: dict, gh: dict) -> str:
   </article>""")
     other_html = ""
     if others:
-        cards = "".join(render_card(loc(p["title"], lang), loc(p["tagline"], lang), p.get("repo"), p.get("links", {}).get("demo"),
+        cards = "".join(render_card(loc(p["title"], lang), loc(p["tagline"], lang), p.get("repo"), loc(p.get("links", {}).get("demo"), lang),
                                     idx.get(p.get("repo", "").lower()), ui) for p in others)
         other_html = f'<h3 class="sub-title reveal">{esc(pu["otherTitle"])}</h3><div class="cards">{cards}</div>'
     return f"""

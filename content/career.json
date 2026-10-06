@@ -12,34 +12,14 @@
     {
       "track": "oss",
       "start": 2026,
-      "role": { "es": "Webs didácticas", "en": "Teaching sites", "gl": "Webs didácticas" },
-      "link": "#project-teaching-sites",
+      "role": "Wahoo",
+      "link": "#project-wahoo",
       "summary": {
-        "es": "Cuatro webs de estudio abiertas, publicadas en GitHub Pages:",
-        "en": "Four open study sites, published on GitHub Pages:",
-        "gl": "Catro webs de estudo abertas, publicadas en GitHub Pages:"
+        "es": "Un compilador de Rust a WebAssembly para un lenguaje propio, con una web que explica cada fase y un playground que ejecuta el compilador en el navegador.",
+        "en": "A Rust compiler to WebAssembly for a language of my own, with a site that explains each phase and a playground that runs the compiler in the browser.",
+        "gl": "Un compilador de Rust a WebAssembly para unha linguaxe propia, cunha web que explica cada fase e un playground que executa o compilador no navegador."
       },
-      "points": {
-        "es": [
-          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): arquitectura, plataforma, IA y cloud, con asistente de estudio con IA.",
-          "[Math of AI](https://toniferr.github.io/math-of-ai/es/): las matemáticas y la historia de la IA, de los autómatas a los LLM.",
-          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/es/): las matemáticas de la computación cuántica, con un simulador de cúbits.",
-          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/es/): un mapa del cálculo universitario y de dónde aparece en la informática."
-        ],
-        "en": [
-          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): architecture, platform, AI and cloud, with an AI study assistant.",
-          "[Math of AI](https://toniferr.github.io/math-of-ai/): the mathematics and history of AI, from automata to LLMs.",
-          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/): the mathematics of quantum computing, with a qubit simulator.",
-          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/): a map of university calculus and where it shows up in computing."
-        ],
-        "gl": [
-          "[Architect Study Hub](https://toniferr.github.io/architect-study-hub/): arquitectura, plataforma, IA e cloud, con asistente de estudo con IA.",
-          "[Math of AI](https://toniferr.github.io/math-of-ai/es/): as matemáticas e a historia da IA, dos autómatas aos LLM.",
-          "[Math of Quantum](https://toniferr.github.io/math-of-quantum/es/): as matemáticas da computación cuántica, cun simulador de cúbits.",
-          "[Calculus × Computing](https://toniferr.github.io/calculus-computing/es/): un mapa do cálculo universitario e de onde aparece na informática."
-        ]
-      },
-      "tags": ["MkDocs", "Python", "Astro", "MathML", "LLMs"]
+      "tags": ["Rust", "WebAssembly", { "es": "Compiladores", "en": "Compilers", "gl": "Compiladores" }]
     },
     {
       "track": "oss",

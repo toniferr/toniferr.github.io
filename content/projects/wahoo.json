@@ -1,0 +1,80 @@
+{
+  "id": "wahoo",
+  "featured": true,
+  "order": 3,
+  "repo": "toniferr/wahoo",
+  "title": "Wahoo",
+  "links": {
+    "demo": {
+      "es": "https://toniferr.github.io/wahoo/es/",
+      "en": "https://toniferr.github.io/wahoo/",
+      "gl": "https://toniferr.github.io/wahoo/es/"
+    }
+  },
+  "tagline": {
+    "es": "Un compilador completo, escrito en Rust, para un lenguaje del Reino Champiñón que genera WebAssembly, y una web que enseña cómo funciona un compilador.",
+    "en": "A complete compiler, written in Rust, for a language from the Mushroom Kingdom that targets WebAssembly, and a site that teaches how a compiler works.",
+    "gl": "Un compilador completo, escrito en Rust, para unha linguaxe do Reino Cogomelo que xera WebAssembly, e unha web que ensina como funciona un compilador."
+  },
+  "summary": {
+    "es": "**Wahoo** es un lenguaje con tipos estáticos (`coin`, `pipe`, `bounce`, `wahoo(…)`) y su compilador, escrito en Rust **sin dependencias**: análisis léxico, sintáctico, semántico, optimización y generación de WebAssembly con un codificador binario propio. La web explica cada fase en siete capítulos con figuras interactivas y un *playground* que ejecuta el compilador real en el navegador, compilado a su vez a WebAssembly.",
+    "en": "**Wahoo** is a statically typed language (`coin`, `pipe`, `bounce`, `wahoo(…)`) and its compiler, written in Rust **with no dependencies**: lexing, parsing, semantic analysis, optimisation and WebAssembly generation with a hand-written binary encoder. The site explains each phase in seven chapters with interactive figures and a *playground* that runs the real compiler in the browser, itself compiled to WebAssembly.",
+    "gl": "**Wahoo** é unha linguaxe con tipos estáticos (`coin`, `pipe`, `bounce`, `wahoo(…)`) e o seu compilador, escrito en Rust **sen dependencias**: análise léxica, sintáctica, semántica, optimización e xeración de WebAssembly cun codificador binario propio. A web explica cada fase en sete capítulos con figuras interactivas e un *playground* que executa o compilador real no navegador, compilado á súa vez a WebAssembly."
+  },
+  "highlights": {
+    "es": [
+      "Todas las fases clásicas escritas a mano, sin generadores de parsers ni bibliotecas de Wasm: descenso recursivo, Pratt y recuperación de errores.",
+      "Errores en inglés y español con posición exacta, pistas y «¿querías decir…?».",
+      "El mismo compilador se ejecuta en la terminal (con el intérprete wasmi) y en el navegador, compilado a `wasm32` con una ABI C mínima.",
+      "En CI, cada programa de ejemplo se compila, se ejecuta y se compara con su salida esperada, con y sin optimizador."
+    ],
+    "en": [
+      "Every classic phase written by hand, with no parser generators or Wasm libraries: recursive descent, Pratt parsing and error recovery.",
+      "Errors in English and Spanish with exact positions, hints and \"did you mean…?\".",
+      "The same compiler runs in the terminal (on the wasmi interpreter) and in the browser, compiled to `wasm32` with a tiny C ABI.",
+      "In CI, every example program is compiled, run and compared with its expected output, with and without the optimiser."
+    ],
+    "gl": [
+      "Todas as fases clásicas escritas a man, sen xeradores de parsers nin bibliotecas de Wasm: descenso recursivo, Pratt e recuperación de erros.",
+      "Erros en inglés e español con posición exacta, pistas e «quixeches dicir…?».",
+      "O mesmo compilador execútase no terminal (co intérprete wasmi) e no navegador, compilado a `wasm32` cunha ABI C mínima.",
+      "En CI, cada programa de exemplo compílase, execútase e compárase coa súa saída esperada, con e sen optimizador."
+    ]
+  },
+  "stack": ["Rust", "WebAssembly", "wasmi", "Python", "JavaScript", "GitHub Actions"],
+  "diagram": {
+    "cols": 34,
+    "rows": 20,
+    "groups": [
+      { "x": 0, "y": 0, "w": 12.5, "h": 19.75, "label": "crates/wahoo" }
+    ],
+    "nodes": [
+      { "id": "lex", "x": 0.75, "y": 1.25, "w": 11, "kind": "controller", "label": "lexer", "sub": "tokens" },
+      { "id": "parse", "x": 0.75, "y": 5, "w": 11, "kind": "controller", "label": "parser", "sub": "AST · Pratt" },
+      { "id": "check", "x": 0.75, "y": 8.75, "w": 11, "kind": "controller", "label": "checker",
+        "sub": { "es": "tipos · HIR", "en": "types · HIR", "gl": "tipos · HIR" } },
+      { "id": "opt", "x": 0.75, "y": 12.5, "w": 11, "kind": "controller", "label": "optimizer",
+        "sub": { "es": "plegado · código muerto", "en": "folding · dead code", "gl": "pregado · código morto" } },
+      { "id": "gen", "x": 0.75, "y": 16.25, "w": 11, "kind": "service", "label": "codegen", "sub": "LEB128 · WAT", "accent": true },
+      { "id": "src", "x": 15.5, "y": 1.25, "w": 8, "kind": "doc", "label": "level.wahoo",
+        "sub": { "es": "código fuente", "en": "source", "gl": "código fonte" } },
+      { "id": "cli", "x": 15.5, "y": 10.5, "w": 8, "kind": "service", "label": "wahoo run", "sub": "wasmi" },
+      { "id": "wasm", "x": 15.5, "y": 16.25, "w": 8, "kind": "cube", "label": ".wasm", "sub": "WebAssembly" },
+      { "id": "web", "x": 26, "y": 10.5, "w": 8, "kind": "cube", "label": "wahoo-web",
+        "sub": { "es": "compilador", "en": "compiler", "gl": "compilador" } },
+      { "id": "play", "x": 26, "y": 16.25, "w": 8, "kind": "browser", "label": "playground",
+        "sub": { "es": "navegador", "en": "browser", "gl": "navegador" }, "href": "https://toniferr.github.io/wahoo/playground/" }
+    ],
+    "edges": [
+      { "from": "src", "to": "lex" },
+      { "from": "lex", "to": "parse" },
+      { "from": "parse", "to": "check" },
+      { "from": "check", "to": "opt" },
+      { "from": "opt", "to": "gen" },
+      { "from": "gen", "to": "wasm", "label": "emit" },
+      { "from": "wasm", "to": "cli", "label": "run" },
+      { "from": "wasm", "to": "play", "label": "run" },
+      { "from": "web", "to": "play", "label": "compile" }
+    ]
+  }
+}

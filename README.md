@@ -55,7 +55,12 @@ Crea `content/projects/<id>.json`; para quitarlo, borra el fichero. Campos princ
   "order": 4,                       // posición entre los destacados
   "repo": "toniferr/mi-proyecto",   // de aquí salen estrellas, fechas, licencia y lenguajes
   "title": "Mi proyecto",
-  "links": { "demo": "https://…", "download": "https://…" },
+  "links": {
+    "demo": "https://…",                                 // o { "es", "en", "gl" } si cada idioma tiene su URL
+    "demoLabel": { "es": "Jugar", "en": "Play", "gl": "Xogar" },   // opcional; por defecto "Ver web"
+    "download": "https://…",
+    "more": [{ "label": "itch.io", "url": "https://…" }]           // botones extra (tiendas, otra web…)
+  },
   "tagline":    { "es": "…", "en": "…", "gl": "…" },
   "summary":    { "es": "…", "en": "…", "gl": "…" },   // admite **negrita**, *cursiva* y `código`
   "highlights": { "es": ["…"], "en": ["…"], "gl": ["…"] },

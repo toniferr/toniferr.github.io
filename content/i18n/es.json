@@ -19,9 +19,7 @@
   "hero": {
     "kicker": "Arquitecto de software · Galicia",
     "greeting": "Hola, soy",
-    "lead": "Diseño sistemas que se entienden, se despliegan solos y aguantan el paso del tiempo. {years} años construyendo software; hoy, arquitectura, plataforma y GitOps.",
-    "ctaProjects": "Ver proyectos",
-    "ctaContact": "Hablemos",
+    "lead": "Diseño sistemas que se entienden, se despliegan solos y aguantan el paso del tiempo. {years} años construyendo software; hoy, además, arquitectura, plataforma y GitOps.",
     "diagramHint": "Este diagrama es el mapa del sitio: pulsa un servicio.",
     "diagramLabel": "Diagrama de arquitectura interactivo que sirve de mapa del portfolio",
     "scroll": "Desplázate"

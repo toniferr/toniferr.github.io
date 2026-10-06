@@ -265,10 +265,8 @@ code { font-family: var(--font-mono); font-size: .86em; padding: .1em .35em; bor
 .js .dim-line { animation: grow-x 1s .5s var(--ease) both; transform-origin: left; }
 @keyframes grow-x { from { transform: scaleX(0); opacity: 0; } to { transform: none; opacity: 1; } }
 .lead { max-width: 34rem; font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--ink-2); margin-bottom: 32px; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .js .hero-text > :not(h1) { animation: fade-up .9s var(--ease) both; }
 .js .hero-text > .lead { animation-delay: .35s; }
-.js .hero-text > .cta { animation-delay: .5s; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 
 .hero-diagram { margin: 0; position: relative; }

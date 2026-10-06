@@ -1,7 +1,7 @@
 {
   "id": "teaching-sites",
   "featured": true,
-  "order": 3,
+  "order": 5,
   "title": { "es": "Webs didácticas", "en": "Teaching sites", "gl": "Webs didácticas" },
   "tagline": {
     "es": "Cuatro webs abiertas para estudiar arquitectura de software y las matemáticas que hay detrás de la IA, la computación cuántica y la informática.",
@@ -20,9 +20,9 @@
       "repo": "toniferr/architect-study-hub",
       "stack": "MkDocs · Python · LLMs",
       "desc": {
-        "es": "Base de conocimiento de arquitectura, plataforma, IA y cloud, con un asistente de estudio con IA que usa como contexto la página que estás leyendo.",
-        "en": "A knowledge base on architecture, platform, AI and cloud, with an AI study assistant that uses the page you are reading as context.",
-        "gl": "Base de coñecemento de arquitectura, plataforma, IA e cloud, cun asistente de estudo con IA que usa como contexto a páxina que estás a ler."
+        "es": "Base de conocimiento de arquitectura, plataforma, IA y cloud, con 200 preguntas de entrevista, un simulacro con cronómetro y un asistente de estudio con IA que usa como contexto la página que estás leyendo.",
+        "en": "A knowledge base on architecture, platform, AI and cloud, with 200 interview questions, a timed mock interview and an AI study assistant that uses the page you are reading as context.",
+        "gl": "Base de coñecemento de arquitectura, plataforma, IA e cloud, con 200 preguntas de entrevista, un simulacro con cronómetro e un asistente de estudo con IA que usa como contexto a páxina que estás a ler."
       }
     },
     {

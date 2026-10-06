@@ -19,9 +19,7 @@
   "hero": {
     "kicker": "Software architect · Galicia, Spain",
     "greeting": "Hi, I'm",
-    "lead": "I design systems that are easy to reason about, deploy themselves and age well. {years} years building software; these days, architecture, platform and GitOps.",
-    "ctaProjects": "See projects",
-    "ctaContact": "Let's talk",
+    "lead": "I design systems that are easy to reason about, deploy themselves and age well. {years} years building software; these days, also architecture, platform and GitOps.",
     "diagramHint": "This diagram is the site map: click a service.",
     "diagramLabel": "Interactive architecture diagram that doubles as the portfolio's site map",
     "scroll": "Scroll"
