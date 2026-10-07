@@ -5,68 +5,76 @@
   "repo": "toniferr/cryptoKit",
   "title": "cryptoKit",
   "links": {
-    "download": "https://github.com/toniferr/cryptoKit/releases"
+    "demo": {
+      "es": "https://toniferr.github.io/cryptoKit/es/",
+      "en": "https://toniferr.github.io/cryptoKit/",
+      "gl": "https://toniferr.github.io/cryptoKit/es/"
+    },
+    "download": "https://github.com/toniferr/cryptoKit/releases/latest"
   },
   "tagline": {
-    "es": "Aplicación de escritorio en Java para cifrar, descifrar y calcular hashes con múltiples algoritmos.",
-    "en": "A Java desktop application to encrypt, decrypt and hash data with multiple algorithms.",
-    "gl": "Aplicación de escritorio en Java para cifrar, descifrar e calcular hashes con múltiples algoritmos."
+    "es": "Aplicación de escritorio en Java para cifrar, descifrar, resumir y firmar con 44 algoritmos, de César y Enigma al ML-KEM poscuántico, y una web que enseña la historia y las matemáticas de la criptografía.",
+    "en": "A Java desktop application to encrypt, decrypt, hash and sign with 44 algorithms, from Caesar and Enigma to post-quantum ML-KEM, and a site that teaches the history and mathematics of cryptography.",
+    "gl": "Aplicación de escritorio en Java para cifrar, descifrar, resumir e asinar con 44 algoritmos, de César e Enigma ao ML-KEM poscuántico, e unha web que ensina a historia e as matemáticas da criptografía."
   },
   "summary": {
-    "es": "Herramienta de escritorio en Java Swing que reúne en una sola interfaz codificación (hexadecimal y Base64), hashes (MD5, SHA-1, SHA-2 y SHA-3) y cifrado simétrico (DES, AES y Blowfish en modos ECB, CBC y GCM), además de cifrado basado en contraseña con Jasypt. Se distribuye como ejecutable en GitHub Releases.",
-    "en": "A Java Swing desktop tool that brings together, in a single interface, encoding (hexadecimal and Base64), hashing (MD5, SHA-1, SHA-2 and SHA-3) and symmetric encryption (DES, AES and Blowfish in ECB, CBC and GCM modes), plus password-based encryption with Jasypt. Distributed as an executable on GitHub Releases.",
-    "gl": "Ferramenta de escritorio en Java Swing que reúne nunha soa interface codificación (hexadecimal e Base64), hashes (MD5, SHA-1, SHA-2 e SHA-3) e cifrado simétrico (DES, AES e Blowfish en modos ECB, CBC e GCM), ademais de cifrado baseado en contrasinal con Jasypt. Distribúese como executable en GitHub Releases."
+    "es": "Mi proyecto más antiguo (2017), reescrito en su **versión 2.0** (2026). La aplicación Java Swing, con tema claro y oscuro y en inglés y español, reúne cifrados clásicos, codificaciones, hashes, HMAC, hash de contraseñas (Argon2id, scrypt, bcrypt), cifrado simétrico autenticado (AES-GCM, ChaCha20-Poly1305), clave pública (RSA, X25519) y los algoritmos **poscuánticos** ML-KEM y ML-DSA; el mismo jar es también una herramienta de línea de comandos. La acompaña un portal con diez capítulos de historia y matemáticas, de César a los retículos, con teoremas y figuras interactivas que ejecutan los algoritmos reales en el navegador.",
+    "en": "My oldest project (2017), rewritten as **version 2.0** (2026). The Java Swing application, with light and dark themes and in English and Spanish, brings together classical ciphers, encodings, hashes, HMAC, password hashing (Argon2id, scrypt, bcrypt), authenticated symmetric encryption (AES-GCM, ChaCha20-Poly1305), public-key cryptography (RSA, X25519) and the **post-quantum** algorithms ML-KEM and ML-DSA; the same jar is also a command-line tool. It comes with a portal of ten chapters on history and mathematics, from Caesar to lattices, with theorems and interactive figures that run the real algorithms in the browser.",
+    "gl": "O meu proxecto máis antigo (2017), reescrito na súa **versión 2.0** (2026). A aplicación Java Swing, con tema claro e escuro e en inglés e español, reúne cifrados clásicos, codificacións, hashes, HMAC, hash de contrasinais (Argon2id, scrypt, bcrypt), cifrado simétrico autenticado (AES-GCM, ChaCha20-Poly1305), clave pública (RSA, X25519) e os algoritmos **poscuánticos** ML-KEM e ML-DSA; o mesmo jar é tamén unha ferramenta de liña de comandos. Acompáñaa un portal con dez capítulos de historia e matemáticas, de César aos retículos, con teoremas e figuras interactivas que executan os algoritmos reais no navegador."
   },
   "highlights": {
     "es": [
-      "Proveedores JCA y Bouncy Castle para cubrir algoritmos que el JDK no trae.",
-      "AES en modo GCM (cifrado autenticado) y PBE con `PBEWithHMACSHA512AndAES_256`.",
-      "Integración continua con Travis CI y CircleCI, y cobertura con Codecov.",
-      "Software libre (GPL-3.0) con ejecutable descargable en Releases."
+      "Cada algoritmo lleva una etiqueta de seguridad (recomendado, heredado, roto…) y un enlace «Cómo funciona» a su capítulo del portal.",
+      "Valores seguros por defecto: IV y nonces aleatorios, modos autenticados que rechazan datos manipulados y comparaciones en tiempo constante.",
+      "89 pruebas con vectores oficiales (NIST, RFC) y con textos cifrados por la versión 1.0, que siguen descifrándose.",
+      "Publicación con GitHub Actions: el jar y paquetes portables para Windows, macOS y Linux con su propio Java; el portal, en GitHub Pages."
     ],
     "en": [
-      "JCA and Bouncy Castle providers to cover algorithms the JDK doesn't ship.",
-      "AES in GCM mode (authenticated encryption) and PBE with `PBEWithHMACSHA512AndAES_256`.",
-      "Continuous integration with Travis CI and CircleCI, coverage with Codecov.",
-      "Free software (GPL-3.0) with a downloadable executable on Releases."
+      "Every algorithm carries a security badge (recommended, legacy, broken…) and a “How it works” link to its chapter on the portal.",
+      "Safe defaults: random IVs and nonces, authenticated modes that reject tampered data, and constant-time comparisons.",
+      "89 tests with official vectors (NIST, RFC) and with ciphertexts made by version 1.0, which still decrypt.",
+      "Released with GitHub Actions: the jar and portable packages for Windows, macOS and Linux with their own Java; the portal on GitHub Pages."
     ],
     "gl": [
-      "Provedores JCA e Bouncy Castle para cubrir algoritmos que o JDK non trae.",
-      "AES en modo GCM (cifrado autenticado) e PBE con `PBEWithHMACSHA512AndAES_256`.",
-      "Integración continua con Travis CI e CircleCI, e cobertura con Codecov.",
-      "Software libre (GPL-3.0) con executable descargable en Releases."
+      "Cada algoritmo leva unha etiqueta de seguridade (recomendado, herdado, roto…) e unha ligazón «Como funciona» ao seu capítulo do portal.",
+      "Valores seguros por defecto: IV e nonces aleatorios, modos autenticados que rexeitan datos manipulados e comparacións en tempo constante.",
+      "89 probas con vectores oficiais (NIST, RFC) e con textos cifrados pola versión 1.0, que seguen descifrándose.",
+      "Publicación con GitHub Actions: o jar e paquetes portables para Windows, macOS e Linux co seu propio Java; o portal, en GitHub Pages."
     ]
   },
-  "stack": ["Java 11", "Swing", "JCA", "Bouncy Castle", "Jasypt", "Maven"],
+  "stack": [
+    "Java 21",
+    "Swing",
+    "FlatLaf",
+    "Bouncy Castle",
+    "Maven",
+    "JavaScript",
+    "Python",
+    "GitHub Actions"
+  ],
   "diagram": {
     "cols": 34,
     "rows": 20,
     "groups": [
-      { "x": 26.5, "y": 0.5, "w": 7.5, "h": 19,
-        "label": { "es": "proveedores", "en": "providers", "gl": "provedores" } }
+      { "x": 25.5, "y": 2, "w": 8.5, "h": 15.5, "label": { "es": "proveedores", "en": "providers", "gl": "provedores" } }
     ],
     "nodes": [
-      { "id": "user", "x": 0, "y": 8.5, "w": 6, "kind": "user",
-        "label": { "es": "usuario", "en": "user", "gl": "usuario" } },
-      { "id": "ui", "x": 9, "y": 8.5, "w": 7, "kind": "browser", "label": "Swing UI",
-        "sub": { "es": "escritorio", "en": "desktop", "gl": "escritorio" }, "accent": true },
-      { "id": "enc", "x": 18, "y": 2.5, "w": 7.5, "kind": "service", "label": "Encoding", "sub": "Hex · Base64" },
-      { "id": "hash", "x": 18, "y": 8.5, "w": 7.5, "kind": "service", "label": "Hash", "sub": "MD5 · SHA-2/3" },
-      { "id": "sym", "x": 18, "y": 14.5, "w": 7.5, "kind": "lock",
-        "label": { "es": "Simétrico", "en": "Symmetric", "gl": "Simétrico" }, "sub": "AES · DES · BF" },
-      { "id": "jdk", "x": 27.5, "y": 2.5, "w": 6, "kind": "cube", "label": "java.util", "sub": "JDK" },
-      { "id": "jca", "x": 27.5, "y": 8.5, "w": 6, "kind": "cube", "label": "JCA + BC", "sub": "Bouncy C." },
-      { "id": "jasypt", "x": 27.5, "y": 14.5, "w": 6, "kind": "cube", "label": "Jasypt", "sub": "PBE" }
+      { "id": "user", "x": 0, "y": 8.5, "w": 6, "kind": "user", "label": { "es": "usuario", "en": "user", "gl": "usuario" } },
+      { "id": "ui", "x": 8.5, "y": 5, "w": 7.5, "kind": "browser", "label": "Swing UI", "sub": "FlatLaf · en/es", "accent": true },
+      { "id": "cli", "x": 8.5, "y": 12, "w": 7.5, "kind": "controller", "label": "CLI", "sub": "scripts" },
+      { "id": "core", "x": 17, "y": 8.5, "w": 7.5, "kind": "lock", "label": { "es": "44 algoritmos", "en": "44 algorithms", "gl": "44 algoritmos" }, "sub": "core" },
+      { "id": "portal", "x": 17, "y": 1, "w": 7.5, "kind": "doc", "label": "portal", "sub": { "es": "10 capítulos", "en": "10 chapters", "gl": "10 capítulos" }, "href": "https://toniferr.github.io/cryptoKit/" },
+      { "id": "jdk", "x": 26.25, "y": 4.5, "w": 7.5, "kind": "cube", "label": "JDK", "sub": "AES · Ed25519" },
+      { "id": "bc", "x": 26.25, "y": 12.5, "w": 7.5, "kind": "cube", "label": "Bouncy C.", "sub": "ML-KEM · Argon2" }
     ],
     "edges": [
       { "from": "user", "to": "ui" },
-      { "from": "ui", "to": "enc" },
-      { "from": "ui", "to": "hash" },
-      { "from": "ui", "to": "sym" },
-      { "from": "enc", "to": "jdk" },
-      { "from": "hash", "to": "jca" },
-      { "from": "sym", "to": "jca" },
-      { "from": "sym", "to": "jasypt" }
+      { "from": "user", "to": "cli" },
+      { "from": "ui", "to": "core" },
+      { "from": "cli", "to": "core" },
+      { "from": "ui", "to": "portal" },
+      { "from": "core", "to": "jdk" },
+      { "from": "core", "to": "bc" }
     ]
   }
 }

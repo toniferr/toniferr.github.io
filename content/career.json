@@ -123,11 +123,11 @@
       "role": "cryptoKit",
       "link": "https://github.com/toniferr/cryptoKit",
       "summary": {
-        "es": "Aplicación de escritorio de cifrado en Java Swing; mi proyecto open source con más estrellas.",
-        "en": "A Java Swing encryption desktop app; my most-starred open-source project.",
-        "gl": "Aplicación de escritorio de cifrado en Java Swing; o meu proxecto open source con máis estrelas."
+        "es": "Aplicación de escritorio de cifrado en Java Swing; mi proyecto open source con más estrellas. En 2026, versión 2.0 con 44 algoritmos (incluidos los poscuánticos) y un portal sobre la historia y las matemáticas de la criptografía.",
+        "en": "A Java Swing encryption desktop app; my most-starred open-source project. In 2026, version 2.0 with 44 algorithms (post-quantum included) and a portal on the history and mathematics of cryptography.",
+        "gl": "Aplicación de escritorio de cifrado en Java Swing; o meu proxecto open source con máis estrelas. En 2026, versión 2.0 con 44 algoritmos (incluídos os poscuánticos) e un portal sobre a historia e as matemáticas da criptografía."
       },
-      "tags": ["Java", "JCA", "Bouncy Castle"]
+      "tags": ["Java", "Bouncy Castle", "Post-quantum"]
     },
     {
       "track": "work",
