@@ -229,17 +229,6 @@ def fetch_github(user: str, token: str | None) -> dict:
     }
 
 
-def download_avatar(url: str) -> None:
-    target = SRC / "img" / "avatar.jpg"
-    try:
-        req = urllib.request.Request(f"{url}&s=480" if "?" in url else f"{url}?s=480",
-                                     headers={"User-Agent": "portfolio-build"})
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            target.write_bytes(resp.read())
-    except Exception as e:
-        warn(f"avatar download failed, keeping the existing one: {e}")
-
-
 def load_github(refresh: bool, release: bool, user: str) -> dict:
     cache = DATA / "github.json"
     if refresh:
@@ -247,8 +236,8 @@ def load_github(refresh: bool, release: bool, user: str) -> dict:
             data = fetch_github(user, os.environ.get("GITHUB_TOKEN"))
             DATA.mkdir(exist_ok=True)
             cache.write_text(json.dumps(data, indent=1, ensure_ascii=False), encoding="utf-8", newline="\n")
-            if data["profile"].get("avatar_url"):
-                download_avatar(data["profile"]["avatar_url"])
+            # The portrait (src/img/avatar.jpg) is the LinkedIn photo, kept in the repo:
+            # never overwrite it with the GitHub avatar.
             return data
         except (urllib.error.URLError, KeyError, TimeoutError) as e:
             if release and not cache.exists():
